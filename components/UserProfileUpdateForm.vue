@@ -154,22 +154,51 @@
   });
 
   
-  const handleSubmit = async () => {
-    // const [firstName, lastName] = formData.name.split(' ');
-    // console.log(firstName, lastName);
-    const payload = {
-      name: formData.name, // Fallback to the entire name if only one name was entered
-      email: formData.email,
-      status: formData.status,
-    };
-    console.log(payload, 'payload here', props.user?.id);
-    setUpdatePayload(payload);
+  // const handleSubmit = async () => {
+  //   // const [firstName, lastName] = formData.name.split(' ');
+  //   // console.log(firstName, lastName);
+  //   const payload = {
+  //     name: formData.name, // Fallback to the entire name if only one name was entered
+  //     email: formData.email,
+  //     status: formData.status,
+  //   };
+  //   console.log(payload, 'payload here', props.user?.id);
+  //   setUpdatePayload(payload);
 
-      // Edit existing admin profile
+  //     // Edit existing admin profile
+  //     await updateUserProfile(props.user.id);
+  //     emit('close');
+  // };
+  
+  const handleSubmit = async () => {
+  // Compare formData with props.user to determine updated fields
+  const updatedFields = {};
+  
+  Object.keys(formData).forEach((key) => {
+    if (formData[key] !== props.user[key]) {
+      updatedFields[key] = formData[key];
+    }
+  });
+
+  console.log(updatedFields, 'payload here', props.user?.id);
+  
+  // Only proceed if there are updated fields
+  if (Object.keys(updatedFields).length > 0) {
+    setUpdatePayload(updatedFields);
+
+    try {
+      // Edit existing admin profile with updated fields
       await updateUserProfile(props.user.id);
       emit('close');
-  };
-  
+    } catch (error) {
+      console.error('Error updating profile:', error);
+    }
+  } else {
+    console.log('No changes to update');
+    emit('close'); // Optionally close the form if no changes are detected
+  }
+};
+
   
   const emit = defineEmits<{
     (event: 'close'): void;
