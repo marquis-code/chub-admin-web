@@ -102,6 +102,110 @@
                     }}</td>
                   <td class="py-4 text-xs text-[#667085] px-3">
                     <div v-if="report.status === 'PENDING'" class="flex items-center gap-2">
+                      <button
+                        @click="handleUpdate(report, 'REMOVED')"
+                        class="text-red-600 flex justify-center items-center flex-col text-xs gap-y-1"
+                        :disabled="loading === report.id + '-REMOVE'"
+                      >
+                        <div v-if="loading === report.id + '-REMOVE'" class="flex justify-center items-center">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="animate-spin h-4 w-4 text-red-600"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <circle
+                              class="opacity-25"
+                              cx="12"
+                              cy="12"
+                              r="10"
+                              stroke="currentColor"
+                              stroke-width="4"
+                            ></circle>
+                            <path
+                              class="opacity-75"
+                              fill="currentColor"
+                              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+                            ></path>
+                          </svg>
+                        </div>
+                        <div v-else>
+                          <svg
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <rect x="0.5" y="0.5" width="23" height="23" rx="11.5" stroke="#EB3D4D" />
+                            <path
+                              d="M8 8L16 16"
+                              stroke="#EB3D4D"
+                              stroke-width="1.5"
+                              stroke-linecap="round"
+                            />
+                            <path
+                              d="M8 16L16 8"
+                              stroke="#EB3D4D"
+                              stroke-width="1.5"
+                              stroke-linecap="round"
+                            />
+                          </svg>
+                          Remove
+                        </div>
+                      </button>
+
+                      <button
+                        @click="handleUpdate(report, 'APPROVED')"
+                        class="text-green-600 flex justify-center items-center flex-col text-xs gap-y-1"
+                        :disabled="loading === report.id + '-APPROVE'"
+                      >
+                        <div v-if="loading === report.id + '-APPROVE'" class="flex justify-center flex-col items-center">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="animate-spin h-4 w-4 text-green-600"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <circle
+                              class="opacity-25"
+                              cx="12"
+                              cy="12"
+                              r="10"
+                              stroke="currentColor"
+                              stroke-width="4"
+                            ></circle>
+                            <path
+                              class="opacity-75"
+                              fill="currentColor"
+                              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+                            ></path>
+                          </svg>
+                        </div>
+                        <div v-else>
+                          <svg
+                            width="25"
+                            height="24"
+                            viewBox="0 0 25 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <rect x="1" y="0.5" width="23" height="23" rx="11.5" stroke="#1A9882" />
+                            <path
+                              d="M5.5 11.5043L10.3 16.2L18.5 8"
+                              stroke="#1A9882"
+                              stroke-width="1.5"
+                              stroke-linecap="round"
+                            />
+                          </svg>
+                          Approve
+                        </div>
+                      </button>
+                    </div>
+
+                    <!-- <div v-if="report.status === 'PENDING'" class="flex items-center gap-2">
                       <button @click="handleUpdate(report, 'REMOVED')"
                         class="text-red-600 flex justify-center items-center flex-col text-xs gap-y-1">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -120,19 +224,20 @@
                         </svg>
 
                         Approve</button>
-                    </div>
+                    </div> -->
                   </td>
                 </tr>
               </tbody>
             </table>
-            <!-- <div
-          v-if="loading && !contentReports.length"
+            <div
+          v-else-if="loading && !contentReports.length"
           class="h-44 w-full bg-slate-300 animate-pulse rounded"
         ></div>
         <div v-else class="flex-1 bg-white shadow-md rounded-lg m-4 border w- border-gray-50">
           <div class="border py-20 rounded-lg flex justify-center items-center text-gray-600">No Content Report available</div>
-        </div> -->
+        </div> 
           </div>
+                   <!---->
         </div>
 
       </div>
@@ -172,7 +277,6 @@
                 <p class="text-xs text-gray-500">End date</p>
                 <p class="font-medium text-xs text-gray-900">{{ item.endDate }}</p>
               </div>
-              <!-- Icons -->
               <div class="flex items-center gap-2">
                 <button>
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -212,11 +316,12 @@ import moment from 'moment';
 import { useUpdateContentReportStatus } from '@/composables/content/updateContentReport'
 import { useGetContentReports } from '@/composables/content/getContentReport'
 const { loading, contentReports, filteredContentReports, searchQuery, selectedStatus } = useGetContentReports()
-const { updateContentReports, loading: updatating, setPayload } = useUpdateContentReportStatus()
+const { updateContentReports, isReportLoading, setPayload } = useUpdateContentReportStatus()
 definePageMeta({
   layout: "dashboard",
   // middleware: 'auth'
 });
+
 
 const showFeatureContentModal = ref(false);
 
