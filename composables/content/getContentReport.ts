@@ -14,8 +14,9 @@ export const useGetContentReports = () => {
         loading.value = true;
 
         const response = await contentApiFactory.$_get_content_reports(selectedStatus.value) as any;
+        console.log(response, 'here')
         if (response.type !== 'ERROR') {
-            contentReports.value = response.data.data ?? [];
+            contentReports.value = response.data.data.reports ?? [];
             filteredReports.value = response.data.data ?? []; // Initialize filtered reports
         }
         loading.value = false;
