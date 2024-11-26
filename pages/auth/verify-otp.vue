@@ -28,6 +28,11 @@
               </p> -->
             </form>
       </div>
+      <CoreFullScreenLoader
+          :visible="loading"
+          text="Verifying OTP CODE..."
+          logo="/path-to-your-logo.png"
+      />
     </main>
   </template>
   

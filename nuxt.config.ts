@@ -9,8 +9,26 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+  ssr: false,
   plugins: ["~/plugins/aos.client.ts"],
   modules: ['@kevinmarrec/nuxt-pwa', "nuxt-emoji-picker"],
+  css: [
+    'vue3-emoji-picker/css'
+  ],
+  vite: {
+    css: {
+      preprocessorOptions: {
+        css: {
+          charset: false, // Handle charset issues
+        },
+      },
+    },
+    optimizeDeps: {
+      include: [
+        "vue3-emoji-picker/css",
+      ],
+    },
+  },
   nitro: {
     prerender: {
       routes: ['/'],  // Specify only static, easily prerenderable routes here
@@ -68,22 +86,5 @@ export default defineNuxtConfig({
         strategyOptions: { cacheableResponse: { statuses: [0, 200] } },
       },
     ],
-  }
-  // modules: [
-  //   '@nuxtjs/pwa'
-  // ],
-  // pwa: {
-  //   manifest: {
-  //     name: 'My Awesome Nuxt 3 PWA',
-  //     short_name: 'Nuxt3PWA',
-  //     lang: 'en',
-  //     useWebmanifestExtension: false,
-  //     display: 'standalone',
-  //     theme_color: '#4DBA87',
-  //     background_color: '#000000'
-  //   },
-  //   workbox: {
-  //     // Workbox options for customizing the service worker
-  //   }
-  // }
+  },
 });

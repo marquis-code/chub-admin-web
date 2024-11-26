@@ -30,10 +30,12 @@
         </div>
         
    
-        <div class="flex items-center w-full lg:w-auto px-4 py-3 text-gray-500 border rounded-md text-xs gap-x-3">
-          <input type="date" class="w-full lg:w-auto" />
-          <img src="@/assets/icons/date-picker.svg" alt="date-picker-icon" />
-        </div>
+<!--        <div class="flex items-center w-full lg:w-auto px-4 py-3 text-gray-500 border rounded-md text-xs gap-x-3">-->
+<!--          <input type="date" class="w-full lg:w-auto" />-->
+<!--          <CoreCustomDatepicker v-model="selectedDate" @dateSelected="handleSelectedStartDate" />-->
+<!--          <img src="@/assets/icons/date-picker.svg" alt="date-picker-icon" />-->
+<!--        </div>-->
+        <CoreCustomDatepicker v-model="selectedDate" @dateSelected="handleSelectedStartDate" />
         
 
         <button
@@ -86,6 +88,11 @@
     emit('toggleFilter')
   }
 
+  const selectedDate = ref('')
+
+  const handleSelectedStartDate = (date: any) => {
+    selectedDate.value = date
+  }
 
   // Search query state
 const searchQuery = ref('')

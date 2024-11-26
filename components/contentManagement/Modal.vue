@@ -30,11 +30,15 @@
         <div class="flex mb-4">
           <div class="w-1/2 mr-2">
             <label class="block text-sm text-[#777980]">Start Date</label>
-            <datepicker :value="startDate"></datepicker>
+<!--            <VDatePicker v-model="startDate" />-->
+<!--            <datepicker :value="startDate"></datepicker>-->
+            <CoreCustomDatepicker v-model="startDate" @dateSelected="handleSelectedStartDate" />
           </div>
           <div class="w-1/2 ml-2">
             <label class="block text-sm text-[#777980]">End Date</label>
-            <datepicker :value="endDate"></datepicker>
+<!--            <VDatePicker v-model="endDate" />-->
+<!--            <datepicker :value="endDate"></datepicker>-->
+            <CoreCustomDatepicker v-model="endDate" @dateSelected="handleSelectedEndDate" />
           </div>
         </div>
         <div class="mb-4 border-t py-3 border-gray-100">
@@ -77,8 +81,11 @@
   </template>
   
   <script setup lang="ts">
-  import Datepicker from 'vuejs3-datepicker';
+  if (process.client) {
+  import('vue3-emoji-picker/css');
+}
   import { ref } from 'vue';
+
 
   const showNewGroupModal = ref(false)
   
@@ -87,6 +94,14 @@
   const startDate = ref('');
   const endDate = ref('');
   const userGroup = ref('');
+
+  const handleSelectedStartDate = (date: any) => {
+    startDate.value = date;
+  }
+
+  const handleSelectedEndDate = (date: any) => {
+    endDate.value = date;
+  }
 
   const emit = defineEmits(['close'])
   

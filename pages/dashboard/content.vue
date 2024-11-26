@@ -27,8 +27,8 @@
             <!-- Search and Filters -->
             <div class="flex items-center gap-2">
               <div class="relative">
-                <input type="text" placeholder="Search for a challenge"
-                  class="border-[#E0E2E7]  border-[0.5px] pl-10 rounded-lg py-2 text-sm w-480" />
+                <input type="text" placeholder="Search for a report"
+                  class="border-[#E0E2E7] outline-none  border-[0.5px] pl-10 rounded-lg py-3 text-sm w-480" />
                 <span class="absolute inset-y-0 left-2 flex items-center text-gray-400">
                   <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clip-path="url(#clip0_6637_6237)">
@@ -45,11 +45,13 @@
 
                 </span>
               </div>
-              <input
-                class="flex items-center gap-2 border-[0.5px] outline-none rounded-lg px-4 py-2 text-sm text-gray-500"
-                type="date" />
+<!--                 <div class="relative">-->
+<!--                   <Datepicker v-model="picked" class="border-[#E0E2E7] py-3 border rounded-md pl-3 outline-none" />-->
+<!--                   <img class="absolute right-3 top-3" src="@/assets/icons/date-picker.svg" alt="date picker" />-->
+<!--                 </div>-->
+              <CoreCustomDatepicker v-model="pickedDate" @dateSelected="handleDateSelected" />
               <button
-                class="flex items-center gap-2 border-[0.5px] border-gray-100 rounded-lg px-4 py-2 text-sm text-gray-500">
+                class="flex items-center gap-2 border-[0.5px] border-gray-100 rounded-lg px-4 py-3 text-sm text-gray-500">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <g clip-path="url(#clip0_6637_6246)">
                     <path
@@ -243,7 +245,7 @@
       </div>
 
       <!-- Right Column: Featured Content -->
-      <div class="bg-white rounded-lg shadow p-6">
+      <div class="bg-white rounded-lg shadow lg:p-6">
         <div class="flex justify-between items-center">
           <h2 class="text-lg font-semibold text-[#1D1F2C]">Featured Content</h2>
           <button @click="showFeatureContentModal = true"
@@ -254,7 +256,7 @@
 
         <!-- Featured Items -->
         <div class="mt-6 space-y-4">
-          <div v-for="(item, index) in featuredContent" :key="index"
+          <div v-if="featuredContent.length" v-for="(item, index) in featuredContent" :key="index"
             class="flex items-center justify-between border-b pb-4 last:border-none">
             <!-- Icon and Details -->
             <div class="flex items-center gap-4">
@@ -300,6 +302,7 @@
               </div>
             </div>
           </div>
+          <div class="flex justify-center border-gray-50 items-center border rounded-md text-sm py-20" v-else>No Featured Content</div>
         </div>
       </div>
     </div>
@@ -308,7 +311,6 @@
     <ContentManagementModal @close="showFeatureContentModal = false" />
   </div>
 </template>
-
 
 
 <script lang="ts" setup>
@@ -321,6 +323,15 @@ definePageMeta({
   layout: "dashboard",
   // middleware: 'auth'
 });
+
+const picked = ref(new Date())
+
+const selectedDate = ref<Date | null>(null);
+
+// Handle the emitted event from the CalendarPicker
+// const handleDateSelected = (date: Date | null) => {
+//   selectedDate.value = date;
+// };
 
 
 const showFeatureContentModal = ref(false);
@@ -335,20 +346,26 @@ const handleUpdate = async (report: any, status: string) => {
 }
 
 const featuredContent = [
-  {
-    title: "Create 15 comics",
-    targetGroup: "John something",
-    endDate: "12 Sept 2024",
-  },
-  {
-    title: "Create 15 comics",
-    targetGroup: "John something",
-    endDate: "12 Sept 2024",
-  },
-  {
-    title: "Create 15 comics",
-    targetGroup: "John something",
-    endDate: "12 Sept 2024",
-  },
+  // {
+  //   title: "Create 15 comics",
+  //   targetGroup: "John something",
+  //   endDate: "12 Sept 2024",
+  // },
+  // {
+  //   title: "Create 15 comics",
+  //   targetGroup: "John something",
+  //   endDate: "12 Sept 2024",
+  // },
+  // {
+  //   title: "Create 15 comics",
+  //   targetGroup: "John something",
+  //   endDate: "12 Sept 2024",
+  // },
 ];
+
+const pickedDate = ref('');
+
+const handleDateSelected = (date: any) => {
+  console.log('Date Selected:', date);
+};
 </script>

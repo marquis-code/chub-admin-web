@@ -120,6 +120,11 @@
       </div>
      </CoreBaseModal>
   </main>
+  <CoreFullScreenLoader
+      :visible="loading"
+      text="Authenticating..."
+      logo="/path-to-your-logo.png"
+  />
 </template>
 
 <script setup lang="ts">
