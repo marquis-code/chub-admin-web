@@ -9,7 +9,7 @@
           v-for="notification in notifications"
           :key="notification.id"
           :class="[
-            'pointer-events-auto w-full max-w-lg overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5',
+            'pointer-events-auto w-full max-w-lg overflow-hidden rounded-lg -lg ring-1 ring-black ring-opacity-5',
             notification.type === 'success' ? 'bg-green-50' : 'bg-red-100'
           ]"
         >

@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white rounded-lg shadow-md p-4 flex flex-col items-center justify-center">
+  <div class="bg-white rounded-lg -md p-4 flex flex-col items-center justify-center">
     <div class="flex-shrink-0">
       <img class="rounded-full w-16 h-16" :src="avatar" alt="Avatar">
     </div>

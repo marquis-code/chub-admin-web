@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white w-full p-3 border border-gray-50 rounded-lg shadow-lg">
+  <div class="bg-white w-full p-3 border border-gray-50 rounded-lg -lg">
     <div class="p-6 rounded-lg mb-4 py-20 flex justify-between items-end relative overflow-hidden">
     <!-- Text content -->
     <h2 class="text-2xl font-semibold text-white max-w-xs relative z-10">

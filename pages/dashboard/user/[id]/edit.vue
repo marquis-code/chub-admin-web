@@ -71,7 +71,7 @@
           <p class="mt-1 text-sm leading-6 text-gray-600">Update your photo and personal details.</p>
         </div>
 
-        <form class="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2 w-full max-w-3xl">
+        <form class="bg-white -sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2 w-full max-w-3xl">
           <div class="px-4 py-6 sm:p-8 w-full">
             <div class="max-w-2xl space-y-6">
               <div class="flex w-full gap-x-5">
@@ -79,7 +79,7 @@
                   <label for="first-name" class="block text-sm font-medium leading-6 text-gray-900">First name</label>
                   <div class="mt-2">
                     <input type="text" name="first-name" id="first-name" autocomplete="given-name"
-                      class="block w-full rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                      class="block w-full rounded-md border-0 py-2.5 text-gray-900 -sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                   </div>
                 </div>
 
@@ -87,7 +87,7 @@
                   <label for="last-name" class="block text-sm font-medium leading-6 text-gray-900">Last name</label>
                   <div class="mt-2">
                     <input type="text" name="last-name" id="last-name" autocomplete="family-name"
-                      class="block w-full rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                      class="block w-full rounded-md border-0 py-2.5 text-gray-900 -sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                   </div>
                 </div>
               </div>
@@ -96,7 +96,7 @@
                 <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
                 <div class="mt-2">
                   <input id="email" name="email" type="email" autocomplete="email"
-                    class="block w-full rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                    class="block w-full rounded-md border-0 py-2.5 text-gray-900 -sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                 </div>
               </div>
 
@@ -134,7 +134,7 @@
             <button type="button"
               class="text-sm font-medium leading-6 text-gray-900 border border-gray-200 px-5 py-2.5 rounded-md">Cancel</button>
             <button type="submit"
-              class="rounded-md bg-[#690571] px-3 py-2.5 text-sm font-medium text-white shadow-sm hover:bg-[#690571] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#690571]">Save
+              class="rounded-md bg-[#690571] px-3 py-2.5 text-sm font-medium text-white -sm hover:bg-[#690571] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#690571]">Save
               changes</button>
           </div>
         </form>
@@ -146,11 +146,11 @@
           <p class="mt-1 text-sm leading-6 text-gray-600">Update your portfolio and bio.</p>
         </div>
 
-        <form class="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2 p-6 space-y-6 max-w-3xl w-full">
+        <form class="bg-white -sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2 p-6 space-y-6 max-w-3xl w-full">
           <div class="w-full">
             <label for="country" class="block text-sm font-medium leading-6 text-gray-900">Country</label>
             <select id="country" name="country" autocomplete="country-name"
-              class="mt-2 block w-full rounded-md border-0 bg-white py-3.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+              class="mt-2 block w-full rounded-md border-0 bg-white py-3.5 text-gray-900 -sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
               <option>United States</option>
               <option>Canada</option>
               <option>Mexico</option>
@@ -159,7 +159,7 @@
           <div class="w-full">
             <label for="country" class="block text-sm font-medium leading-6 text-gray-900">Timezone</label>
             <select id="country" name="country" autocomplete="country-name"
-              class="mt-2 block w-full rounded-md border-0 bg-white py-3.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+              class="mt-2 block w-full rounded-md border-0 bg-white py-3.5 text-gray-900 -sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
               <option>United States</option>
               <option>Canada</option>
               <option>Mexico</option>
@@ -169,7 +169,7 @@
             <button type="button"
               class="text-sm font-medium leading-6 text-gray-900 border border-gray-200 px-5 py-2.5 rounded-md">Cancel</button>
             <button type="submit"
-              class="rounded-md bg-[#690571] px-3 py-2.5 text-sm font-medium text-white shadow-sm hover:bg-[#690571] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#690571]">Save
+              class="rounded-md bg-[#690571] px-3 py-2.5 text-sm font-medium text-white -sm hover:bg-[#690571] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#690571]">Save
               changes</button>
           </div>
         </form>
@@ -187,14 +187,14 @@
               <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:py-6">
                 <label for="username" class="block text-sm font-medium leading-6 text-gray-900 sm:pt-1.5">Current password</label>
                 <input id="email" name="email" type="email" autocomplete="email"
-                class="block w-full rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                class="block w-full rounded-md border-0 py-2.5 text-gray-900 -sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
               </div>
 
               <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:py-6">
                 <label for="username" class="block text-sm font-medium leading-6 text-gray-900 sm:pt-1.5">New password</label>
               <div class="space-y-2">
                 <input id="email" name="email" type="email" autocomplete="email"
-                class="block w-full rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                class="block w-full rounded-md border-0 py-2.5 text-gray-900 -sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                 <p class="text-sm text-[#475467] block">Your new password must be more than 8 characters.</p>
               </div>
               </div>
@@ -202,14 +202,14 @@
               <div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:py-6">
                 <label for="username" class="block text-sm font-medium leading-6 text-gray-900 sm:pt-1.5">Confirm new password</label>
                 <input id="email" name="email" type="email" autocomplete="email"
-                class="block w-full rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                class="block w-full rounded-md border-0 py-2.5 text-gray-900 -sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
               </div>
 
               <div class="flex items-center justify-end gap-x-6 border-t border-gray-900/10 px-4 py-4 sm:px-8">
                 <button type="button"
                   class="text-sm font-medium leading-6 text-gray-900 border border-gray-200 px-5 py-2.5 rounded-md">Cancel</button>
                 <button type="submit"
-                  class="rounded-md bg-[#690571] px-3 py-2.5 text-sm font-medium text-white shadow-sm hover:bg-[#690571] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#690571]">Update password</button>
+                  class="rounded-md bg-[#690571] px-3 py-2.5 text-sm font-medium text-white -sm hover:bg-[#690571] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#690571]">Update password</button>
               </div>
 
       <div>

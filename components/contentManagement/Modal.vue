@@ -1,6 +1,6 @@
 <template>
   <!-- <main class="w-1/3"> -->
-    <div class="bg-white rounded-lg shadow-lg relative">
+    <div class="bg-white rounded-lg -lg relative">
       <div class="flex justify-between items-center mb-4 border-b px-6 py-3">
         <div>
           <h2 class="text-lg font-medium">Feature Content</h2>

@@ -8,7 +8,7 @@
         @mouseover="isHoveredIdx = idx"
         @mouseleave="isHoveredIdx = null"
         v-for="(item, idx) in challenges" :key="idx"
-        class="bg-white cursor-pointer p-4 rounded-lg border-[0.5px] shadow-sm mb-4"
+        class="bg-white cursor-pointer p-4 rounded-lg border-[0.5px] -sm mb-4"
         @click="handleClick(item, idx)"
       >
         <div class="flex justify-between items-center border-b border-dashed border-gray-200 pb-6">

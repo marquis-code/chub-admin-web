@@ -1,5 +1,5 @@
 <template>
-    <div class="lg:w-1/3 bg-white shadow-md rounded-lg m-4 border border-gray-50">
+    <div class="lg:w-1/3 bg-white -md rounded-lg m-4 border border-gray-50">
         <div class="flex items-center justify-between mb-4 border-b pb-5 border-gray-100 px-4 pt-4">
           <h2 class="text-lg font-semibold text-[#1D1F2C]">Featured Content</h2>
           <button @click="handleFeatureContent" class="bg-[#690571] text-white rounded-lg px-4 py-2 text-sm">Feature content</button>

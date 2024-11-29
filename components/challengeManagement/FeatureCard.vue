@@ -1,5 +1,5 @@
 <template>
-  <div class="border border-gray-50 bg-white p-4 rounded-lg shadow-sm relative">
+  <div class="border border-gray-50 bg-white p-4 rounded-lg -sm relative">
     <input type="checkbox" class="absolute left-4 top-4" />
     <img
       src="@/assets/icons/more.svg"

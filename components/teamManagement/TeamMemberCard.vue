@@ -8,7 +8,7 @@
     @mouseover="isHovered = true"
     @mouseleave="isHovered = false"
     @click="toggleCheckbox"
-    class="border bg-white p-4 rounded-lg shadow-sm relative cursor-pointer"
+    class="border bg-white p-4 rounded-lg -sm relative cursor-pointer"
   >
     <input type="checkbox"  v-model="isChecked" class="absolute left-4 top-4 h-4 w-4 pointer-events-none accent-[#2A1634]" />
     <img
@@ -19,7 +19,7 @@
     />
     <div
       v-if="isDropdownVisible"
-      class="absolute right-4 top-10 bg-white shadow-lg rounded-lg p-2 w-48"
+      class="absolute right-4 top-10 bg-white -lg rounded-lg p-2 w-48"
     >
       <ul class="">
         <li @click="handleAction('modify')" class="p-2 hover:bg-gray-50 rounded cursor-pointer flex items-center gap-x-2 text-xs">            

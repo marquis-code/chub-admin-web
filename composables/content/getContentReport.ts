@@ -1,11 +1,15 @@
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed, onMounted, watch } from 'vue';
 import { contentApiFactory } from '@/apiFactory/modules/content';
 
 const contentReports = ref([]) as any; // Store all reports
 const filteredReports = ref([]) as any; // Store filtered reports
 const loading = ref(false);
 const searchQuery = ref(''); // Search query for filtering
-const selectedStatus = ref(''); // Status filter
+const filters = ref({
+    status: '',
+    contentType: '',
+    reason: ''
+});
 
 export const useGetContentReports = () => {
     const getContentReports = async () => {
@@ -13,11 +17,10 @@ export const useGetContentReports = () => {
         filteredReports.value = [];
         loading.value = true;
 
-        const response = await contentApiFactory.$_get_content_reports(selectedStatus.value) as any;
-        console.log(response, 'here')
+        const response = await contentApiFactory.$_get_content_reports(filters.value) as any;
+        console.log(response, 'here');
         if (response.type !== 'ERROR') {
             contentReports.value = response.data.data.reports ?? [];
-            filteredReports.value = response.data.data ?? []; // Initialize filtered reports
         }
         loading.value = false;
     };
@@ -38,12 +41,17 @@ export const useGetContentReports = () => {
         getContentReports();
     });
 
+    // Watch the filters for changes and trigger the API call when they change
+    watch(filters, () => {
+        getContentReports();
+    }, { deep: true }); // Ensure deep watching of the filters object
+
     return {
         getContentReports,
         loading,
         contentReports,
         filteredContentReports,
         searchQuery,
-        selectedStatus,
+        filters
     };
 };

@@ -1,6 +1,6 @@
 <!-- <template>
     <div v-if="isOpen" class="fixed inset-0 z-50 bg-black bg-opacity-50 flex justify-center items-center">
-      <div class="bg-white w-11/12 md:w-[600px] p-6 rounded-lg shadow-lg relative">
+      <div class="bg-white w-11/12 md:w-[600px] p-6 rounded-lg -lg relative">
         <div class="flex justify-between items-center mb-4">
           <h2 class="text-lg font-semibold text-gray-900">Filters</h2>
           <button @click="resetFilters" class="text-sm text-[#858D9D] flex items-center gap-x-2">
@@ -90,7 +90,7 @@
   <template>
     <div v-if="isOpen" class="fixed inset-0 z-50 bg-black bg-opacity-50 flex justify-center items-center">
       <!-- Modal Content -->
-      <div class="bg-white w-11/12 md:w-[600px] max-h-[80vh] p-6 rounded-lg shadow-lg relative overflow-y-auto">
+      <div class="bg-white w-11/12 md:w-[600px] max-h-[80vh] p-6 rounded-lg -lg relative overflow-y-auto">
         <div class="flex justify-between items-center mb-4">
           <h2 class="text-lg font-semibold text-gray-900">Filters</h2>
           <button @click="resetFilters" class="text-sm text-[#858D9D] flex items-center gap-x-2">

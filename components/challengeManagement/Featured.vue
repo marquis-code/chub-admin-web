@@ -1,5 +1,5 @@
  <template>
-  <main class="border border-gray-100 rounded-lg bg-white shadow pt-6">
+  <main class="border border-gray-100 rounded-lg bg-white  pt-6">
     <div class="px-6 lg:flex justify-between items-center space-y-4 lg:space-y-0">
       <div>
         <h4 class="text-xl text-[#1D1F2C]">Featured Challenges</h4>

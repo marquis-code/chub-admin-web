@@ -1,5 +1,5 @@
 <template>
-    <div class="p-4 max-w-lg mx-auto bg-white border rounded-lg shadow-lg">
+    <div class="p-4 max-w-lg mx-auto bg-white border rounded-lg -lg">
       <div class="flex justify-between items-center mb-4">
         <h2 class="text-lg font-semibold">What type of proof</h2>
         <button class="text-gray-500">&times;</button>

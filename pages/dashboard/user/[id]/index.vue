@@ -209,7 +209,7 @@
             <div class="w-full">
                 <div class="bg-white overflow-x-auto flex items-start gap-x-10 w-full">
                     <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8 w-full">
-                        <div class="stat-card border shadow-sm border-gray-50 py-6 flex justify-between bg-white rounded-lg p-3"
+                        <div class="stat-card border -sm border-gray-50 py-6 flex justify-between bg-white rounded-lg p-3"
                             v-for="({ name, count, icon }, idx) in stats" :key="idx">
                             <div>
                                 <h4 class="text-[#777980] text-sm font-medium">{{ name }}</h4>
@@ -364,7 +364,7 @@
                                     </p>
                                 </div>
                                 <div>
-                                    <nav class="isolate inline-flex -space-x-px rounded-md shadow-sm"
+                                    <nav class="isolate inline-flex -space-x-px rounded-md -sm"
                                         aria-label="Pagination">
                                         <a href="#"
                                             class="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">
@@ -496,7 +496,7 @@
                                     </p>
                                 </div>
                                 <div>
-                                    <nav class="isolate inline-flex -space-x-px rounded-md shadow-sm"
+                                    <nav class="isolate inline-flex -space-x-px rounded-md -sm"
                                         aria-label="Pagination">
                                         <a href="#"
                                             class="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">

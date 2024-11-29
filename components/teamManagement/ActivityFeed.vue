@@ -1,7 +1,7 @@
    <template>
-    <div class="bg-white rounded-lg border border-gray-50 shadow-md p-4">
+    <div class="bg-white rounded-lg border border-gray-50 -md p-4">
       <h2 class="text-lg font-bold mb-3">Activity</h2>
-      <div class="relative space-y-4 h-96 overflow-y-auto">
+      <div class="relative space-y-4 h-[370px] overflow-y-auto">
         <div class="absolute left-2 top-6 bottom-6 w-px border-dashed border-gray-300 border"></div>
         <div v-for="(activity, index) in logs" :key="index" class="relative flex items-start">
           <span class="w-4 h-4 bg-purple-700 rounded-full mt-1 mr-4 relative z-10"></span>

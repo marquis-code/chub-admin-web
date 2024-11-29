@@ -218,7 +218,7 @@
       </div>
     </div>
   
-    <div class="sticky top-0 z-40 flex items-center gap-x-6 bg-white px-4 py-4 shadow-sm sm:px-6 lg:hidden">
+    <div class="sticky top-0 z-40 flex items-center gap-x-6 bg-white px-4 py-4 -sm sm:px-6 lg:hidden">
       <button @click="isSidebarOpen = true" type="button" class="-m-2.5 p-2.5 text-gray-700 lg:hidden">
         <span class="sr-only">Open sidebar</span>
         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">

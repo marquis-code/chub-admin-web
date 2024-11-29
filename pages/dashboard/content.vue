@@ -1,4 +1,5 @@
 <template>
+<main>
   <CoreOverviewHeader  />
   <div class="min-h-screen mt-6">
     <!-- Main Grid -->
@@ -6,7 +7,7 @@
       <!-- Left Column: Content Header and Reports -->
       <div class="md:col-span-2 space-y-6">
         <!-- Content Header -->
-        <div class="bg-white rounded-lg shadow p-6">
+        <div class="bg-white rounded-lg  px-6 pb-6 border-[0.5px] border-gray-50 mt-10">
           <h1 class="text-4xl font-medium text-[#161721] max-w-xs">Manage user content</h1>
           <p class="text-[#777980] mt-2 max-w-xs">
             Create and manage admins, content admins and challenge admins
@@ -14,7 +15,7 @@
         </div>
 
         <!-- Reports Table -->
-        <div class="bg-white rounded-lg shadow">
+        <div class="bg-white rounded-lg ">
           <!-- Table Header -->
           <div class="flex items-center justify-between px-4 pt-4">
             <div class="flex items-center gap-2">
@@ -50,7 +51,7 @@
 <!--                   <img class="absolute right-3 top-3" src="@/assets/icons/date-picker.svg" alt="date picker" />-->
 <!--                 </div>-->
               <CoreCustomDatepicker v-model="pickedDate" @dateSelected="handleDateSelected" />
-              <button
+              <button type="button" @click="openFilterModal"
                 class="flex items-center gap-2 border-[0.5px] border-gray-100 rounded-lg px-4 py-3 text-sm text-gray-500">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <g clip-path="url(#clip0_6637_6246)">
@@ -73,14 +74,24 @@
 
                 Filters
               </button>
+              <AirbnbStyleDatepicker
+                    :trigger-element-id="'datepicker-trigger'"
+                    :mode="'range'"
+                    :fullscreen-mobile="true"
+                    :date-one="dateOne"
+                    :date-two="dateTwo"
+                    @date-one-selected="val => { dateOne = val }"
+                    @date-two-selected="val => { dateTwo = val }"
+                  />
+
             </div>
           </div>
 
           <!-- Reports Table Content -->
-          <div class="overflow-x-auto mt-6">
+          <div class="overflow-x-auto mt-6 border-[0.5px] border-gray-50 rounded-lg">
             <table v-if="!loading && contentReports.length" class="min-w-full text-sm text-left">
               <thead>
-                <tr class="border-b bg-[#F0F1F3]">
+                <tr class="border-b-[0.5px] border-gray-50 bg-[#F9F9FC]">
                   <th class="py-4 px-4 text-xs font-medium">Content</th>
                   <th class="py-4 px-4 text-xs font-medium">Reported by</th>
                   <th class="py-4 px-4 text-xs font-medium">Created by</th>
@@ -93,7 +104,36 @@
               <tbody>
                 <tr v-for="(report, index) in contentReports" :key="index"
                   class="border-b-[0.5px] border-gray-100 last:border-b-0">
-                  <td class="py-4 text-xs text-[#667085] px-3">{{ report?.content?.body?.message || 'Nil' }}</td>
+                  <td class="py-4 text-xs text-[#667085] px-3">
+                    <!-- <div class="flex items-center space-x-4 mb-6"> -->
+                        <div>
+                          <div class="font-medium text-xs">{{  report?.content?.type ?? 'Nil' }}</div>
+                          <div class="text-xs text-gray-500">Challange</div>
+                        </div>
+                        <div>
+                         <a  v-if="report?.content?.type === 'DOCUMENT'" :href="report?.content.body.media[0].url">
+                          <img
+                          src="@/assets/icons/document.svg"
+                          alt="User Avatar"
+                          class="rounded-full"
+                        />
+                         </a>
+                        <img
+                          v-if="report?.content?.type === 'TEXT'"
+                          src="@/assets/icons/document.svg"
+                          alt="User Avatar"
+                          class="rounded-full"
+                        />
+                        <img
+                          v-if="report?.content?.type === 'TEXT'"
+                          src="@/assets/img/report-image.png"
+                          alt="User Avatar"
+                          class="rounded-full"
+                        />
+                        </div>
+                      <!-- </div> -->
+                    <!-- {{ report?.content?.body?.message || 'Nil' }} -->
+                  </td>
                   <td class="py-4 text-xs text-[#1D1F2C] px-3 text-[#883DCF] font-medium">{{
                     report?.reportedBy?.firstName }} {{ report?.reportedBy?.lastName }}</td>
                   <td class="py-4 text-xs text-[#667085] px-3">{{ report?.contentBy || 'Nil' }}</td>
@@ -235,7 +275,7 @@
           v-else-if="loading && !contentReports.length"
           class="h-44 w-full bg-slate-300 animate-pulse rounded"
         ></div>
-        <div v-else class="flex-1 bg-white shadow-md rounded-lg m-4 border w- border-gray-50">
+        <div v-else class="flex-1 bg-white -md rounded-lg m-4 border w- border-gray-50">
           <div class="border py-20 rounded-lg flex justify-center items-center text-gray-600">No Content Report available</div>
         </div> 
           </div>
@@ -245,7 +285,7 @@
       </div>
 
       <!-- Right Column: Featured Content -->
-      <div class="bg-white rounded-lg shadow lg:p-6">
+      <div class="bg-white rounded-lg  lg:p-6">
         <div class="flex justify-between items-center">
           <h2 class="text-lg font-semibold text-[#1D1F2C]">Featured Content</h2>
           <button @click="showFeatureContentModal = true"
@@ -310,6 +350,86 @@
   <div v-if="showFeatureContentModal" class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
     <ContentManagementModal @close="showFeatureContentModal = false" />
   </div>
+  <CoreFullScreenLoader
+      :visible="loading"
+      text="Fetching data..."
+      logo="/path-to-your-logo.png"
+  />
+
+  <div
+      v-if="isModalOpen"
+      class="fixed inset-0 z-50 bg-black bg-opacity-50 flex justify-center items-center"
+    >
+      <div class="bg-white p-6 rounded-lg shadow-lg max-w-lg w-full">
+        <h3 class="text-base font-semibold mb-4">Apply Filters</h3>
+
+        <!-- Filter Form -->
+        <form @submit.prevent="applyFilters">
+          <div class="mb-4">
+            <label for="contentType" class="block text-xs font-medium leading-6 text-[#777980]">
+              Content Type
+            </label>
+            <select
+              v-model="selectedFilters.contentType"
+              id="contentType"
+              class="block w-full rounded-md border-[0.5px] text-[#858D9D] bg-[#E0E2E7] outline-none py-3.5 pl-3 bg-[#F9F9FC] placeholder:text-gray-400 sm:text-sm sm:leading-6"
+            >
+              <option v-for="type in contentTypes" :key="type" :value="type">
+                {{ type }}
+              </option>
+            </select>
+          </div>
+
+          <div class="mb-4">
+            <label for="status" class="block text-xs font-medium leading-6 text-[#777980]">
+              Status
+            </label>
+            <select
+              v-model="selectedFilters.status"
+              id="status"
+              class="block w-full rounded-md border-[0.5px] text-[#858D9D] bg-[#E0E2E7] outline-none py-3.5 pl-3 bg-[#F9F9FC] placeholder:text-gray-400 sm:text-sm sm:leading-6"
+            >
+              <option value="APPROVED">Approved</option>
+              <option value="PENDING">Pending</option>
+              <option value="REMOVED">Removed</option>
+            </select>
+          </div>
+
+          <div class="mb-4">
+            <label for="reason" class="block text-xs font-medium leading-6 text-[#777980]">
+              Reason
+            </label>
+            <select
+              v-model="selectedFilters.reason"
+              id="reason"
+              class="block w-full rounded-md border-[0.5px] text-[#858D9D] bg-[#E0E2E7] outline-none py-3.5 pl-3 bg-[#F9F9FC] placeholder:text-gray-400 sm:text-sm sm:leading-6"
+            >
+              <option v-for="reason in reasons" :key="reason" :value="reason">
+                {{ reason }}
+              </option>
+            </select>
+          </div>
+
+          <div class="flex justify-end pt-6">
+            <button
+              type="button"
+              class="px-4 py-2 bg-gray-300 text-gray-700 text-sm rounded-md mr-2"
+              @click="closeFilterModal"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              @click="applyFilters"
+              class="px-4 py-2 text-sm bg-[#690571] text-white rounded-md"
+            >
+              Apply Filters
+            </button>
+          </div>
+        </form>
+      </div>
+  </div>
+</main>
 </template>
 
 
@@ -317,50 +437,88 @@
 import moment from 'moment';
 import { useUpdateContentReportStatus } from '@/composables/content/updateContentReport'
 import { useGetContentReports } from '@/composables/content/getContentReport'
-const { loading, contentReports, filteredContentReports, searchQuery, selectedStatus } = useGetContentReports()
+const { loading, contentReports, filteredContentReports, searchQuery, filters } = useGetContentReports()
 const { updateContentReports, isReportLoading, setPayload } = useUpdateContentReportStatus()
+
 definePageMeta({
   layout: "dashboard",
   // middleware: 'auth'
 });
 
-const picked = ref(new Date())
+const dateOne = ref('')
+const dateTwo = ref('')
 
+const picked = ref(new Date())
 const selectedDate = ref<Date | null>(null);
 
-// Handle the emitted event from the CalendarPicker
-// const handleDateSelected = (date: Date | null) => {
-//   selectedDate.value = date;
-// };
+// Modal open/close state
+const isModalOpen = ref(false);
 
+// Random content types and reasons
+const contentTypes = ref([
+  'Article',
+  'Image',
+  'Video',
+  'Document',
+  'Audio',
+  'Blog Post',
+]);
 
-const showFeatureContentModal = ref(false);
+const reasons = ref([
+  'Inappropriate content',
+  'Duplicate content',
+  'Quality issue',
+  'Irrelevant content',
+]);
+
+// Selected filter values from the modal
+const selectedFilters = ref({
+  contentType: '',
+  status: 'APPROVED',
+  reason: '',
+});
+
+// Sync selectedFilters with filters from useGetContentReports
+watch(selectedFilters, (newFilters) => {
+  filters.value.contentType = newFilters.contentType;
+  filters.value.status = newFilters.status;
+  filters.value.reason = newFilters.reason;
+}, { deep: true });
+
+// Handle applying the filters (close modal and update filters)
+const applyFilters = () => {
+  console.log('Applied Filters:', selectedFilters.value);
+  // Emit or process the selected filters as needed
+  closeFilterModal();
+};
+
+// Function to open the filter modal
+const openFilterModal = () => {
+  // Set the modal filters to match the current filters
+  selectedFilters.value = {
+    contentType: filters.value.contentType,
+    status: filters.value.status,
+    reason: filters.value.reason,
+  };
+  isModalOpen.value = true;
+};
+
+// Function to close the filter modal
+const closeFilterModal = () => {
+  isModalOpen.value = false;
+};
 
 const handleUpdate = async (report: any, status: string) => {
   const payload = {
     status: status,
     reviewNote: ''
-  }
-  setPayload(payload)
-  await updateContentReports(report.id)
-}
+  };
+  setPayload(payload);
+  await updateContentReports(report.id);
+};
 
 const featuredContent = [
-  // {
-  //   title: "Create 15 comics",
-  //   targetGroup: "John something",
-  //   endDate: "12 Sept 2024",
-  // },
-  // {
-  //   title: "Create 15 comics",
-  //   targetGroup: "John something",
-  //   endDate: "12 Sept 2024",
-  // },
-  // {
-  //   title: "Create 15 comics",
-  //   targetGroup: "John something",
-  //   endDate: "12 Sept 2024",
-  // },
+  // Example featured content data
 ];
 
 const pickedDate = ref('');
@@ -369,3 +527,4 @@ const handleDateSelected = (date: any) => {
   console.log('Date Selected:', date);
 };
 </script>
+

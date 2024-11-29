@@ -109,7 +109,7 @@
           </button>
           <div
             v-if="activeDropdown === idx"
-            class="absolute -top-2 right-10 z-50 mt-2 w-60 bg-white border border-gray-200 rounded-md shadow-lg"
+            class="absolute -top-2 right-10 z-50 mt-2 w-60 bg-white border border-gray-200 rounded-md -lg"
           >
             <ul
               class="py-1 text-sm text-gray-700 divide divide-y-[0.5px]"

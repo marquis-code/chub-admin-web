@@ -9,8 +9,8 @@
         :stats="userStatsInfo"
         customAddText="Create new user group"
       />
-    <div class="bg-white lg:flex items-start gap-x-10">
-      <div  v-if="!loadingStats && Object.keys(statsObj).length" class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8 lg:w-4/12">
+    <div class="bg-white lg:flex items-start gap-x-6">
+      <div  v-if="!loadingStats && Object.keys(statsObj).length" class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8 lg:w-5/12">
         <userStats :statsObj="statsObj" />
       </div>
       <div v-else-if="loading && !Object.keys(statsObj).length" class="rounded-lg bg-gray-100 h-96 w-full mt-4"></div>
@@ -47,7 +47,7 @@
             Filters</button>
         </div>
       </div>
-      <div v-if="!loading && usersList.length" class="mt-8 flow-root border bg-white rounded-xl border-gray-50 shadow-sm">
+      <div v-if="!loading && usersList.length" class="mt-8 flow-root border bg-white rounded-xl border-gray-50 -sm">
         <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
             <div class="relative">
@@ -73,7 +73,7 @@
               </p>
             </div>
             <div>
-              <nav class="isolate inline-flex rounded-md shadow-sm space-x-3" aria-label="Pagination">
+              <nav class="isolate inline-flex rounded-md -sm space-x-3" aria-label="Pagination">
                 <a href="#" class="relative inline-flex items-center rounded-xl px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">
                   <span class="sr-only">Previous</span>
                   <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">

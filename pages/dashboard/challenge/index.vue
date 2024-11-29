@@ -103,14 +103,14 @@
 
     <template #action-btn>
       <div class="flex justify-end space-x-3">
-        <button @click="showCreateModal = false"  type="button" class="rounded-md bg-white px-3 py-3 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Cancel</button>
+        <button @click="showCreateModal = false"  type="button" class="rounded-md bg-white px-3 py-3 text-sm font-semibold text-gray-900 -sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Cancel</button>
           <button
           type="button"
-          class="rounded-md bg-white px-3 py-3 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+          class="rounded-md bg-white px-3 py-3 text-sm font-semibold text-gray-900 -sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
         >
           Save to drafts
         </button>
-        <button :disabled="creating" @click="submitChallenge" class="inline-flex disabled:cursor-not-allowed disabled:opacity-25 justify-center rounded-md bg-[#690571] px-3 py-3 text-sm font-semibold text-white shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ">{{creating ? 'processing..'  : 'Create Challenge'}} </button>
+        <button :disabled="creating" @click="submitChallenge" class="inline-flex disabled:cursor-not-allowed disabled:opacity-25 justify-center rounded-md bg-[#690571] px-3 py-3 text-sm font-semibold text-white -sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ">{{creating ? 'processing..'  : 'Create Challenge'}} </button>
       </div>
     </template>
      </CoreSideDrawer>
@@ -123,14 +123,14 @@
 <!-- 
       <template #action-btn>
       <div class="flex justify-end space-x-3">
-        <button @click="showEditModal = false"  type="button" class="rounded-md bg-white px-3 py-3 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Cancel</button>
+        <button @click="showEditModal = false"  type="button" class="rounded-md bg-white px-3 py-3 text-sm font-semibold text-gray-900 -sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Cancel</button>
           <button
           type="button"
-          class="rounded-md bg-white px-3 py-3 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+          class="rounded-md bg-white px-3 py-3 text-sm font-semibold text-gray-900 -sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
         >
           Save to drafts
         </button>
-        <button :disabled="editing" @click="submitEditChallenge" class="inline-flex disabled:cursor-not-allowed disabled:opacity-25 justify-center rounded-md bg-[#690571] px-3 py-3 text-sm font-semibold text-white shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ">{{ editing ? 'processing..'  : 'Save Challenge'}} </button>
+        <button :disabled="editing" @click="submitEditChallenge" class="inline-flex disabled:cursor-not-allowed disabled:opacity-25 justify-center rounded-md bg-[#690571] px-3 py-3 text-sm font-semibold text-white -sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ">{{ editing ? 'processing..'  : 'Save Challenge'}} </button>
       </div>
     </template> -->
 

@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-white rounded-lg border border-gray-50 shadow-md p-4">
+    <div class="bg-white rounded-lg border border-gray-50 -md p-4">
       <h2 class="text-xl font-bold mb-4">Activity</h2>
       <div class="relative space-y-4">
         <div class="absolute left-2 top-6 bottom-6 w-px border-dashed border-gray-300 border"></div>

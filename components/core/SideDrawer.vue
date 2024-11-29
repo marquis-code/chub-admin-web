@@ -6,7 +6,7 @@
       <div class="absolute inset-0 overflow-hidden">
         <div class="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10 sm:pl-16">
           <div class="pointer-events-auto w-screen max-w-2xl">
-            <form class="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
+            <form class="flex h-full flex-col overflow-y-scroll bg-white -xl">
               <div class="flex-1">
                 <!-- Header -->
                 <div class="bg-gray-50 px-4 py-6 sm:px-6 sticky top-0 z-50">
@@ -37,8 +37,8 @@
               <div class="flex-shrink-0 sticky bottom-0 z-50 border-t bg-white border-gray-200 px-4 py-5 sm:px-6">
                 <slot name="action-btn" />
                 <!-- <div class="flex justify-end space-x-3">
-                  <button @click="closeModal"  type="button" class="rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Cancel</button>
-                  <button type="submit" class="inline-flex justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Create</button>
+                  <button @click="closeModal"  type="button" class="rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 -sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Cancel</button>
+                  <button type="submit" class="inline-flex justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white -sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Create</button>
                 </div> -->
               </div>
             </form>

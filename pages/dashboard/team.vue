@@ -10,6 +10,11 @@ import { useUpdateAdminProfile } from "@/composables/admin-mgt/updateAdminProfil
 import imageOne from "@/assets/img/admin-stat1.png";
 import imageTwo from "@/assets/img/admin-stat2.png";
 import imageThree from "@/assets/img/admin-stat3.png";
+import { useCreateRole } from '@/composables/roles/useCreateRoles'
+const {  loading: processing,
+        rolePayload,
+        createRole,
+        setRolePayload } = useCreateRole()
 
 definePageMeta({
   layout: "dashboard",
@@ -68,23 +73,28 @@ const userStats = ref([
 
 const payloadObj = ref({
   name: "",
-  tag: "",
-  permissions: {},
+  color: "",
+  permissions: [],
 });
 
-const handleSubmit = () => {
-  setRoleObj(payloadObj.value);
-  createAdminRole().then(() => {
-    showAddRoleModal.value = false;
-  });
+
+const handleSubmit = async () => {
+
+  // Set the role object and proceed
+  setRolePayload(payloadObj.value);
+  await createRole()
+  showAddRoleModal.value = false
+
 };
 
-const handleSelectedRoleTag = (item: any) => {
-  payloadObj.value.tag = item;
+const handleSelectedColor = (item: any) => {
+  console.log(item, 'color selected')
+  payloadObj.value.color = item;
 };
 
 const handlePermissionOptions = (item: any) => {
-  payloadObj.value.permissions = item;
+  console.log(item, 'permissions')
+  payloadObj.value.permissions = item?.permissions;
 };
 
 const activeTab = ref("all");
@@ -119,6 +129,7 @@ const filteredAdminTeams = computed(() => {
 const showAddAdminModal = ref(false);
 const showAddRoleModal = ref(false);
 
+
 const addTeamMember = () => {
   showAddAdminModal.value = true;
 };
@@ -126,6 +137,14 @@ const addTeamMember = () => {
 const handleAddRole = () => {
   showAddRoleModal.value = true;
 };
+
+const handleEditRole = (key: any) => {
+  if(key !== 'totalCount'){
+    showAddRoleModal.value = true;
+    payloadObj.value.name = key
+  }
+  // handleEditRole
+}
 
 const handleAdminActivityDetails = (member: any) => {
   console.log(member, "here");
@@ -136,7 +155,7 @@ const handleAdminActivityDetails = (member: any) => {
 <template>
   <main>
     <section
-      class="bg-white shadow-sm border border-gray-50 rounded-2xl lg:flex justify-between items-center px-6"
+      class="bg-white -sm border border-gray-50 rounded-2xl lg:flex justify-between items-center px-6"
     >
       <h1>Overview</h1>
       <div class="relative flex gap-x-3 w-full lg:w-3/12 py-6">
@@ -169,7 +188,7 @@ const handleAdminActivityDetails = (member: any) => {
       />
     </section>
 
-    <section class="bg-white shadow-sm border border-gray-50 rounded-2xl">
+    <section class="bg-white -sm border border-gray-50 rounded-2xl">
       <div class="border-b border-gray-50">
         <div
           class="lg:flex justify-between items-center px-6 pt-5 border-b-[0.5px] border-gray-100 pb-3"
@@ -336,12 +355,13 @@ const handleAdminActivityDetails = (member: any) => {
       </div>
     </section>
 
-    <div class="lg:p-4 p-2">
+    <div class="mt-6">
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
         <div class="lg:col-span-1">
           <TeamManagementAllAdminsSummary
             :statData="adminUserDistribution"
             @addRole="handleAddRole"
+             @editRole="handleEditRole"
           />
         </div>
         <div class="lg:col-span-2">
@@ -383,16 +403,17 @@ const handleAdminActivityDetails = (member: any) => {
                   id="role-name"
                   v-model="payloadObj.name"
                   placeholder="Type name here..."
-                  class="mt-1 p-2 py-2.5 border rounded w-10/12 font-light text-sm"
+                  class="mt-1 p-2 py-2.5 border rounded w-full outline-none font-light text-sm"
                 />
               </div>
             </section>
-            <TeamManagementColorTags @role-tag="handleSelectedRoleTag" />
+            <TeamManagementColorTags @update:color="handleSelectedColor" />
           </div>
 
-          <TeamManagementPermissionTabs
+          <!-- <TeamManagementPermissionTabs
             @permissionOptions="handlePermissionOptions"
-          />
+          /> -->
+          <TeamManagementPermissionTabs @update:permissions="handlePermissionOptions" />
         </div>
       </section>
       </template>
@@ -414,13 +435,19 @@ const handleAdminActivityDetails = (member: any) => {
               <button
                 type="button"
                 @click="handleSubmit"
+                :disabled="processing"
                 class="px-6 py-2 disabled:cursor-not-allowed disabled:opacity-25 bg-[#690571] text-white rounded-lg text-sm font-medium"
               >
-                {{ creatingRole ? "processing..." : "Save Role" }}
+                {{ processing ? "processing..." : "Save Role" }}
               </button>
             </div>
           </div>
     </template>
      </CoreSideDrawer>
   </main>
+  <CoreFullScreenLoader
+      :visible="loadingAuditLogs"
+      text="Fetching data..."
+      logo="/path-to-your-logo.png"
+  />
 </template>

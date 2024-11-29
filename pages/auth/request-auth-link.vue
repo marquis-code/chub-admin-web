@@ -28,13 +28,13 @@
             <div class="">
               <input id="email" v-model="credential.email.value" placeholder="Enter email" name="email" type="email"
                 autocomplete="email"
-                class="block w-full rounded-t-md outline-none border-[#DBC3DD] border py-4 pl-4 shadow-sm placeholder:text-gray-400 sm:text-sm sm:leading-6" />
+                class="block w-full rounded-t-md outline-none border-[#DBC3DD] border py-4 pl-4 -sm placeholder:text-gray-400 sm:text-sm sm:leading-6" />
             </div>
           </div>
   
           <div class="pt-6">
             <button type="submit" :disabled="loading"
-              class="flex w-full disabled:cursor-not-allowed disabled:opacity-25 justify-center rounded-md bg-[#690571] px-3 py-4 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-[#690571] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#690571]">
+              class="flex w-full disabled:cursor-not-allowed disabled:opacity-25 justify-center rounded-md bg-[#690571] px-3 py-4 text-sm font-semibold leading-6 text-white -sm hover:bg-[#690571] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#690571]">
               {{  loading ? 'Processing...' : 'Request Link' }}
             </button>
           </div>

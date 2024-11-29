@@ -1,6 +1,6 @@
 <template>
     <section
-  class="flex justify-between bg-white shadow-sm border border-gray-50 rounded-2xl p-6"
+  class="flex justify-between bg-white -sm border border-gray-50 rounded-2xl p-6"
 >
   <div>
     <h1 class="text-4xl">Manage user content</h1>

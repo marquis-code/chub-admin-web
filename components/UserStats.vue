@@ -1,6 +1,6 @@
 <template>
     <!-- <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8 lg:w-4/12"> -->
-        <div class="stat-card border shadow-sm border-gray-50 py-6 flex justify-between bg-white rounded-lg p-3" v-for="({name, count, icon}, idx) in stats" :key="idx">
+        <div class="stat-card border -sm border-gray-50 py-6 flex justify-between bg-white rounded-lg p-3" v-for="({name, count, icon}, idx) in stats" :key="idx">
          <div>
           <h4 class="text-[#777980] text-sm font-medium">{{name}}</h4>
           <p class="text-lg text-[#1D1F2C] font-semibold">{{count}}</p>

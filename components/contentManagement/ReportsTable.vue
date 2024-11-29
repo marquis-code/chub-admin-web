@@ -1,6 +1,6 @@
 <template>
    <main>
-    <div class="flex-1 bg-white shadow-md rounded-lg m-4 border border-gray-50">
+    <div class="flex-1 bg-white -md rounded-lg m-4 border border-gray-50">
         <div :class="[showSideContent ? 'flex flex-col' : 'flex']" class="border-b px-4 gap-x-4 pt-4">
          <div class="flex items-center gap-x-3 mb-4 w-full">
            <h1 class="text-lg font-medium text-[#1D1F2C]">Reports</h1>
@@ -89,7 +89,7 @@
           v-if="loading && !contentReports.length"
           class="h-44 w-full bg-slate-300 animate-pulse rounded"
         ></div>
-        <div v-else class="flex-1 bg-white shadow-md rounded-lg m-4 border w- border-gray-50">
+        <div v-else class="flex-1 bg-white -md rounded-lg m-4 border w- border-gray-50">
           <div class="border py-20 rounded-lg flex justify-center items-center text-gray-600">No Content Report available</div>
         </div>
              </div>

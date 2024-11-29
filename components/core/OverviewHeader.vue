@@ -1,6 +1,6 @@
 <template>
     <section
-    class="bg-white shadow-sm border border-gray-50 rounded-2xl lg:flex justify-between items-center px-6"
+    class="bg-white -sm border border-gray-50 rounded-2xl lg:flex justify-between items-center px-6"
   >
     <h1>{{title}}</h1>
     <!-- <div class="relative lg:w-3/12 py-6">

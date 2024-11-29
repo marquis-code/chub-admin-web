@@ -1,6 +1,6 @@
 <template>
   <div class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-    <div class="bg-white rounded-lg shadow-lg w-full max-w-lg space-y-6">
+    <div class="bg-white rounded-lg -lg w-full max-w-lg space-y-6">
 <div class="border-b px-6 pt-9 pb-3">
   <div class="flex justify-between items-center mb-1">
         <h2 class="text-lg font-medium text-[#1D1F2C]">Create User Group</h2>

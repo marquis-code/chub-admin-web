@@ -8,7 +8,7 @@
             <div class="">
               <input id="email" v-model="credential.email.value" placeholder="sign in with your username or email" name="email" type="email"
                 autocomplete="email"
-                class="block w-full rounded-t-md outline-none border-[#DBC3DD] border py-4 pl-4 shadow-sm placeholder:text-gray-400 sm:text-sm sm:leading-6" />
+                class="block w-full rounded-t-md outline-none border-[#DBC3DD] border py-4 pl-4 -sm placeholder:text-gray-400 sm:text-sm sm:leading-6" />
             </div>
           </div>
   
@@ -18,7 +18,7 @@
             <div class="relative">
               <input id="password" :type="showPassword ? 'text' : 'password'"  v-model="credential.password.value" placeholder="enter your password" name="password" type="password"
                 autocomplete="current-password"
-                class="block w-full rounded-b-md outline-none border-[#DBC3DD] border py-4 pl-4 shadow-sm placeholder:text-gray-400 sm:text-sm sm:leading-6" />
+                class="block w-full rounded-b-md outline-none border-[#DBC3DD] border py-4 pl-4 -sm placeholder:text-gray-400 sm:text-sm sm:leading-6" />
                 <img
                 @click="showPassword = !showPassword"
                 :src="eye"
@@ -30,7 +30,7 @@
   
           <div class="pt-6">
             <button type="submit" :disabled="loading || isFormEmpty"
-              class="flex w-full disabled:cursor-not-allowed disabled:opacity-25 justify-center rounded-md bg-[#690571] px-3 py-4 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-[#690571] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#690571]">
+              class="flex w-full disabled:cursor-not-allowed disabled:opacity-25 justify-center rounded-md bg-[#690571] px-3 py-4 text-sm font-semibold leading-6 text-white -sm hover:bg-[#690571] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#690571]">
               {{  loading ? 'Processing...' : 'Sign In' }}
             </button>
           </div>
@@ -56,12 +56,12 @@
             address</label>                                                                                                
           <div class="">
             <input id="email" placeholder="enter your email address" name="email" type="email" autocomplete="email"
-              class="block w-full rounded-t-md outline-none border-[#DBC3DD] border py-4 pl-4 shadow-sm placeholder:text-gray-400 sm:text-sm sm:leading-6" />
+              class="block w-full rounded-t-md outline-none border-[#DBC3DD] border py-4 pl-4 -sm placeholder:text-gray-400 sm:text-sm sm:leading-6" />
           </div>
         </div>
         <div class="pt-3">
           <button type="submit"
-            class="flex w-full justify-center rounded-md bg-[#690571] px-3 py-4 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-[#690571] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#690571]">Send
+            class="flex w-full justify-center rounded-md bg-[#690571] px-3 py-4 text-sm font-semibold leading-6 text-white -sm hover:bg-[#690571] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#690571]">Send
             link</button>
         </div>
        </div>
@@ -78,12 +78,12 @@
              address</label>                                                                                                
            <div class="">
              <input id="otp" placeholder="enter otp code" name="otp" type="tel"
-               class="block w-full rounded-t-md outline-none border-[#DBC3DD] border py-4 pl-4 shadow-sm placeholder:text-gray-400 sm:text-sm sm:leading-6" />
+               class="block w-full rounded-t-md outline-none border-[#DBC3DD] border py-4 pl-4 -sm placeholder:text-gray-400 sm:text-sm sm:leading-6" />
            </div>
          </div>
          <div class="pt-3">
            <button type="submit"
-             class="flex w-full justify-center rounded-md bg-[#690571] px-3 py-4 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-[#690571] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#690571]">Send
+             class="flex w-full justify-center rounded-md bg-[#690571] px-3 py-4 text-sm font-semibold leading-6 text-white -sm hover:bg-[#690571] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#690571]">Send
              verify</button>
          </div>
         </div>
@@ -100,7 +100,7 @@
              address</label>                                                                                                
            <div class="">
              <input id="password" placeholder="enter otp code" name="otp" type="password"
-               class="block w-full rounded-t-md outline-none border-[#DBC3DD] border py-4 pl-4 shadow-sm placeholder:text-gray-400 sm:text-sm sm:leading-6" />
+               class="block w-full rounded-t-md outline-none border-[#DBC3DD] border py-4 pl-4 -sm placeholder:text-gray-400 sm:text-sm sm:leading-6" />
            </div>
          </div>
          <div class="w-full">
@@ -109,12 +109,12 @@
           <div class="">
             <input id="password" placeholder="enter your password" name="password" type="password"
               autocomplete="current-password"
-              class="block w-full rounded-b-md outline-none border-[#DBC3DD] border py-4 pl-4 shadow-sm placeholder:text-gray-400 sm:text-sm sm:leading-6" />
+              class="block w-full rounded-b-md outline-none border-[#DBC3DD] border py-4 pl-4 -sm placeholder:text-gray-400 sm:text-sm sm:leading-6" />
           </div>
         </div>
          <div class="pt-3">
            <button type="submit"
-             class="flex w-full justify-center rounded-md bg-[#dfcce0] px-3 py-4 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-[#690571] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#690571]">Send
+             class="flex w-full justify-center rounded-md bg-[#dfcce0] px-3 py-4 text-sm font-semibold leading-6 text-white -sm hover:bg-[#690571] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#690571]">Send
              verify</button>
          </div>
         </div>

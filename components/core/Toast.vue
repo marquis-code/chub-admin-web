@@ -4,7 +4,7 @@
       class="z-[999999999px]"
       v-if="toastVisible"
       :class="[
-        'fixed top-4 right-4 rounded-lg shadow-lg flex items-center p-4 max-w-sm w-full',
+        'fixed top-4 right-4 rounded-lg -lg flex items-center p-4 max-w-sm w-full',
         toastData.toastType === 'error' ? 'bg-red-50 border-l-4 border-red-400' : 'bg-green-50 border-l-4 border-green-400'
       ]"
     >

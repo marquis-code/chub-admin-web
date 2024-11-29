@@ -1,6 +1,6 @@
 <template>
     <div class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50" v-if="isOpen">
-      <div class="bg-white rounded-lg shadow-lg p-6 max-w-sm w-full relative">
+      <div class="bg-white rounded-lg -lg p-6 max-w-sm w-full relative">
         <button @click="emit('close')" class="absolute top-2 right-2 text-gray-500">
           <span aria-hidden="true">&times;</span>
         </button>

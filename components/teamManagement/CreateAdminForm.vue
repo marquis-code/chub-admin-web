@@ -65,7 +65,7 @@
             name="name"
             id="name"
             v-model.trim="formData.name"
-            class="block w-full rounded-md border-0 outline-none py-3.5 pl-3 bg-[#E0E2E7] text-[#858D9D] shadow-sm placeholder:text-gray-400 sm:text-sm sm:leading-6"
+            class="block w-full rounded-md border-[0.5px] text-[#858D9D] bg-[#E0E2E7] outline-none py-3.5 pl-3 bg-[#F9F9FC] placeholder:text-gray-400 sm:text-sm sm:leading-6"
             placeholder="Type name here. . ."
           />
         </div>
@@ -83,7 +83,7 @@
             name="email"
             id="email"
             v-model="formData.email"
-            class="block w-full rounded-md border-0 outline-none py-3.5 pl-3 bg-[#E0E2E7] text-[#858D9D] shadow-sm placeholder:text-gray-400 sm:text-sm sm:leading-6"
+            class="block w-full rounded-md border-[0.5px] text-[#858D9D] outline-none py-3.5 pl-3 bg-[#F9F9FC]  -sm placeholder:text-gray-400 sm:text-sm sm:leading-6"
             placeholder="Type email here. . ."
           />
         </div>
@@ -101,7 +101,7 @@
             name="phone"
             id="phone"
             v-model="formData.phone"
-            class="block w-full rounded-md border-0 outline-none py-3.5 pl-3 bg-[#E0E2E7] text-[#858D9D] shadow-sm placeholder:text-gray-400 sm:text-sm sm:leading-6"
+            class="block w-full rounded-md border-[0.5px] text-[#858D9D] outline-none py-3.5 pl-3 bg-[#F9F9FC]  -sm placeholder:text-gray-400 sm:text-sm sm:leading-6"
             placeholder="Type phone here. . ."
           />
         </div>
@@ -113,15 +113,24 @@
           class="block text-sm font-medium leading-6 text-[#777980]"
           >Select Role</label
         >
-        <select
+        <!-- <select
           v-model="formData.role"
           id="role"
           name="role"
-          class="block w-full rounded-md border-0 outline-none py-3.5 pl-3 bg-[#E0E2E7] text-[#858D9D] shadow-sm placeholder:text-gray-400 sm:text-sm sm:leading-6"
+          class="block w-full rounded-md  outline-none py-3.5 pl-3 bg-[#F9F9FC] border-[0.5px] text-[#858D9D] -sm placeholder:text-gray-400 sm:text-sm sm:leading-6"
         >
           <option value="" disabled>Select a role. . .</option>
           <option value="SUPER_ADMIN">Super Admin</option>
           <option value="USER_ADMIN">Admin</option>
+        </select> -->
+        <select
+          v-model="formData.role"
+          id="role"
+          name="role"
+          class="block w-full rounded-md  outline-none py-3.5 pl-3 bg-[#F9F9FC] border-[0.5px] -sm placeholder:text-gray-400 sm:text-sm sm:leading-6"
+        >
+          <option value="" disabled>Select a role. . .</option>
+          <option v-for="item in rolesList" :key="item.id" :value="item.name">{{ item?.name }}</option>
         </select>
       </div>
       
@@ -219,6 +228,7 @@
 </template>
 
 <script setup lang="ts">
+import { useGetRoles } from '@/composables/roles/useFetchRoles'
 import { useUpdateAdminProfile } from '@/composables/admin-mgt/updateAdminProfile';
 import { useNotification } from '@/composables/core/useNotification';
 import { useAssignRoleToAdmin } from '@/composables/admin-mgt/assignRoleToAdmin';
@@ -228,6 +238,7 @@ const { addNotification } = useNotification();
 const { updateAdminProfile, loading, setUpdatePayload } = useUpdateAdminProfile();
 const { assignRoleToAdmin, setPayload, loading:updating } =  useAssignRoleToAdmin()
 const { createAdmin, loading: processing, setObj } = useCreateAdmin()
+const { rolesList, loading: loadingRoles } = useGetRoles()
 
 const props = defineProps({
   title: {

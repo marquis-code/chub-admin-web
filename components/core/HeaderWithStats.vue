@@ -1,6 +1,6 @@
 <template>
   <section
-    class="lg:flex justify-between space-y-6 lg:space-y-0 bg-white shadow-sm border border-gray-50 rounded-2xl p-6"
+    class="lg:flex justify-between space-y-6 lg:space-y-0 bg-white -sm border border-gray-50 rounded-2xl p-6"
   >
     <div class="space-y-2">
       <!-- <h1 class="lg:text-6xl text-2xl font-medium max-w-xs">{{title}}</h1> -->
