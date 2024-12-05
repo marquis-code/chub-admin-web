@@ -65,7 +65,7 @@
               name="name"
               id="name"
               v-model.trim="formData.name"
-              class="block w-full rounded-md border-0 outline-none py-3.5 pl-3 bg-[#E0E2E7] text-[#858D9D] -sm placeholder:text-gray-400 sm:text-sm sm:leading-6"
+               class="block w-full rounded-md border-[0.5px] text-[#858D9D] bg-[#E0E2E7] outline-none py-3.5 pl-3 bg-[#F9F9FC] placeholder:text-gray-400 sm:text-sm sm:leading-6"
               placeholder="Type name here. . ."
             />
           </div>
@@ -80,10 +80,10 @@
           <div class="mt-1">
             <input
               type="email"
+              v-model.trim="formData.emsil"
               name="email"
               id="email"
-              v-model="formData.email"
-              class="block w-full rounded-md border-0 outline-none py-3.5 pl-3 bg-[#E0E2E7] text-[#858D9D] -sm placeholder:text-gray-400 sm:text-sm sm:leading-6"
+               class="block w-full rounded-md border-[0.5px] text-[#858D9D] bg-[#E0E2E7] outline-none py-3.5 pl-3 bg-[#F9F9FC] placeholder:text-gray-400 sm:text-sm sm:leading-6"
               placeholder="Type email here. . ."
             />
           </div>
@@ -99,7 +99,7 @@
             v-model="formData.status"
             id="status"
             name="status"
-            class="block w-full rounded-md border-0 outline-none py-3.5 pl-3 bg-[#E0E2E7] text-[#858D9D] -sm placeholder:text-gray-400 sm:text-sm sm:leading-6"
+             class="block w-full rounded-md border-[0.5px] text-[#858D9D] bg-[#E0E2E7] outline-none py-3.5 pl-3 bg-[#F9F9FC] placeholder:text-gray-400 sm:text-sm sm:leading-6"
           >
             <option value="" disabled>Select a status . .</option>
             <option value="ACTIVE">ACTIVE</option>

@@ -35,7 +35,13 @@
 <!--          <CoreCustomDatepicker v-model="selectedDate" @dateSelected="handleSelectedStartDate" />-->
 <!--          <img src="@/assets/icons/date-picker.svg" alt="date-picker-icon" />-->
 <!--        </div>-->
-        <CoreCustomDatepicker v-model="selectedDate" @dateSelected="handleSelectedStartDate" />
+        <!-- <CoreCustomDatepicker v-model="selectedDate" @dateSelected="handleSelectedStartDate" /> -->
+        <CoreDatePicker
+          v-model="selectedDate"
+          :disabled-dates="{}"
+          placeholder="Pick your date"
+          @selectedDate="handleSelectedStartDate"
+    />
         
 
         <button
@@ -50,6 +56,7 @@
   </template>
   
   <script setup lang="ts">
+
   import { ref } from 'vue'
 
   const props = defineProps({

@@ -3,7 +3,7 @@
   <CoreOverviewHeader  />
   <div class="min-h-screen mt-6">
     <!-- Main Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-3">
       <!-- Left Column: Content Header and Reports -->
       <div class="md:col-span-2 space-y-6">
         <!-- Content Header -->
@@ -19,8 +19,8 @@
           <!-- Table Header -->
           <div class="flex items-center justify-between px-4 pt-4">
             <div class="flex items-center gap-2">
-              <h2 class="text-lg font-medium text-[#1D1F2C]">Reports</h2>
-              <span class="text-sm font-medium text-[#1A9882] bg-[#E9FAF7] px-3 py-1 rounded-md">
+              <h2 class="text- font-medium text-[#1D1F2C]">Reports</h2>
+              <span class="text-xs font-medium text-[#1A9882] bg-[#E9FAF7] px-3 py-2 rounded-sm">
                 {{ contentReports?.length }} report{{ contentReports.length > 1 ? 's' : '' }}
               </span>
             </div>
@@ -50,7 +50,23 @@
 <!--                   <Datepicker v-model="picked" class="border-[#E0E2E7] py-3 border rounded-md pl-3 outline-none" />-->
 <!--                   <img class="absolute right-3 top-3" src="@/assets/icons/date-picker.svg" alt="date picker" />-->
 <!--                 </div>-->
-              <CoreCustomDatepicker v-model="pickedDate" @dateSelected="handleDateSelected" />
+              <!-- <CoreCustomDatepicker v-model="pickedDate" @dateSelected="handleDateSelected" /> -->
+              <!-- <CoreDatePicker
+      v-model="filterDate"
+      :disabled-dates="disabledDates"
+      :highlighted="highlightedDates"
+      placeholder="Pick your date"
+      :inline="true"
+    /> -->
+    <!-- <div>
+      <p>Selected Date: {{ selectedDate }}</p>
+    </div> -->
+    <!-- {{ filterDate }} -->
+    <CoreDatePicker
+      v-model="filterDate"
+      placeholder="Pick your date"
+      @selectedDate="handleDateSelected"
+    />
               <button type="button" @click="openFilterModal"
                 class="flex items-center gap-2 border-[0.5px] border-gray-100 rounded-lg px-4 py-3 text-sm text-gray-500">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -74,16 +90,6 @@
 
                 Filters
               </button>
-              <AirbnbStyleDatepicker
-                    :trigger-element-id="'datepicker-trigger'"
-                    :mode="'range'"
-                    :fullscreen-mobile="true"
-                    :date-one="dateOne"
-                    :date-two="dateTwo"
-                    @date-one-selected="val => { dateOne = val }"
-                    @date-two-selected="val => { dateTwo = val }"
-                  />
-
             </div>
           </div>
 
@@ -108,7 +114,7 @@
                     <!-- <div class="flex items-center space-x-4 mb-6"> -->
                         <div>
                           <div class="font-medium text-xs">{{  report?.content?.type ?? 'Nil' }}</div>
-                          <div class="text-xs text-gray-500">Challange</div>
+                          <!-- <div class="text-xs text-gray-500">Challange</div> -->
                         </div>
                         <div>
                          <a  v-if="report?.content?.type === 'DOCUMENT'" :href="report?.content.body.media[0].url">
@@ -125,10 +131,10 @@
                           class="rounded-full"
                         />
                         <img
-                          v-if="report?.content?.type === 'TEXT'"
+                          v-if="report?.content?.type === 'IMAGE'"
                           src="@/assets/img/report-image.png"
                           alt="User Avatar"
-                          class="rounded-full"
+                          class="rounded-full h-10 w-10"
                         />
                         </div>
                       <!-- </div> -->
@@ -523,8 +529,37 @@ const featuredContent = [
 
 const pickedDate = ref('');
 
+// const handleDateSelected = (date: any) => {
+//   console.log('Date Selected:', date);
+// };
+// Handle the custom dateSelected event
 const handleDateSelected = (date: any) => {
-  console.log('Date Selected:', date);
+  const formatted = moment.utc(date).format('DD-MMM-YY')
+  console.log(formatted, 'foirmatted date')
+  // console.log('Date selected:', date); // You can process the selected date here
+  // Optionally update something in the parent based on the selected date
 };
+
+// Local state for selected date
+const filterDate = ref(null);
+
+// Example for disabled dates
+const disabledDates = ref({
+  to: new Date(2023, 0, 5),
+  from: new Date(2023, 0, 20),
+  dates: [
+    new Date(2023, 9, 16),
+    new Date(2023, 9, 17),
+    new Date(2023, 9, 18),
+  ],
+});
+
+// Example for highlighted dates
+const highlightedDates = ref({
+  dates: [
+    new Date(2023, 9, 16),
+    new Date(2023, 9, 17),
+  ],
+});
 </script>
 

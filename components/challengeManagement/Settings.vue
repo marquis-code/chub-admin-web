@@ -4,7 +4,12 @@
       <div class="flex border-b border-gray-100 pb-4">
         <div class="w-1/2 mr-2 space-y-2">
           <label class="block text-sm text-gray-700">Start Date</label>
-          <CoreCustomDatepicker v-model="challengeObj.startDate" @dateSelected="handleSelectedStartDate" />
+          <CoreDatePicker
+                       v-model="challengeObj.startDate"
+                        placeholder="Pick your date"
+                        @selectedDate="handleSelectedStartDate"
+                      />
+          <!-- <CoreCustomDatepicker v-model="challengeObj.startDate" @dateSelected="handleSelectedStartDate" /> -->
 <!--          <div class="relative mt-2">-->
 <!--            <input v-model="challengeObj.startDate" type="date" placeholder="DD/MM/YY" class="w-full p-2 py-3.5 rounded-md pl-10 outline-none border border-gray-300"/>-->
 <!--            <span class="absolute inset-y-0 left-4 flex items-center pr-3 text-gray-400">-->
@@ -26,7 +31,12 @@
         <div class="w-1/2 ml-2">
          <div class="space-y-2">
           <label class="block text-sm text-gray-700">End Date</label>
-           <CoreCustomDatepicker v-model="challengeObj.endDate" @dateSelected="handleSelectedEndDate" />
+          <CoreDatePicker
+                       v-model="challengeObj.endDate"
+                        placeholder="Pick your date"
+                        @selectedDate="handleSelectedEndDate"
+                      />
+           <!-- <CoreCustomDatepicker v-model="challengeObj.endDate" @dateSelected="handleSelectedEndDate" /> -->
 <!--          <p class="text-[#690571] font-medium text-sm cursor-pointer">Schedule </p>-->
          </div>
 <!--          <div class="relative mt-2">-->

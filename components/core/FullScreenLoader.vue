@@ -13,7 +13,7 @@
         <img
           :src="logoImage"
           alt="Loader Logo"
-          class="absolute inset-0  m-auto"
+          class="absolute inset-0 p-3  m-auto"
         />
       </div>
       <!-- Text below the loader -->

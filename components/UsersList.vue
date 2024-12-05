@@ -46,7 +46,7 @@
             />
           </td>
           <!-- Remaining data cells here -->
-          <td @click="router.push(`/dashboard/user/${idx}`)" class="whitespace-nowrap py-4 pr-3 text-sm font-medium text-gray-900">
+          <td @click="router.push(`/dashboard/user/${person.id}`)" class="whitespace-nowrap py-4 pr-3 text-sm font-medium text-gray-900">
             <div class="flex items-center">
               <div class="h-11 w-11 flex-shrink-0">
                 <img class="h-11 w-11 rounded-full"
@@ -58,18 +58,18 @@
               </div>
             </div>
           </td>
-          <td @click="router.push(`/dashboard/user/${idx}`)"
+          <td @click="router.push(`/dashboard/user/${person.id}`)"
             :class="['whitespace-nowrap py-4 pr-3 text-sm font-medium', selectedPeople.includes(person.email) ? 'text-indigo-600' : 'text-gray-900']"
             class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ person?.email ?? 'Nil' }}</td>
-          <td @click="router.push(`/dashboard/user/${idx}`)" class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ person?.phone ?? 'Nil' }}</td>
-          <td @click="router.push(`/dashboard/user/${idx}`)" class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"> {{ moment.utc(person?.createdAt).format('DD-MMM-YY') || 'Nil' }}</td>
-          <td @click="router.push(`/dashboard/user/${idx}`)" class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">  {{ moment.utc(person?.lastSeen).format('DD-MMM-YY') || 'Nil' }}</td>
-          <td @click="router.push(`/dashboard/user/${idx}`)" class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+          <td @click="router.push(`/dashboard/user/${person.id}`)" class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ person?.phone ?? 'Nil' }}</td>
+          <td @click="router.push(`/dashboard/user/${person.id}`)" class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"> {{ moment.utc(person?.createdAt).format('DD-MMM-YY') || 'Nil' }}</td>
+          <td @click="router.push(`/dashboard/user/${person.id}`)" class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">  {{ moment.utc(person?.lastSeen).format('DD-MMM-YY') || 'Nil' }}</td>
+          <td @click="router.push(`/dashboard/user/${person.id}`)" class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
             <span class="px-5 py-1.5 font-medium rounded-lg"
               :class="[person.status === 'ACTIVE' ? 'bg-[#E9FAF7] text-[#1A9882]' : person.status === 'DEACTIVATED' ? 'bg-[#FEECEE] text-[#EB3D4D]' : person.status === 'SUSPENDED' ? 'bg-[#F0F1F3] text-[#667085]' : 'bg-[#F0F1F3] text-[#667085]']">
               {{ person.status }}</span>
           </td>
-          <td @click="router.push(`/dashboard/user/${idx}`)" class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ person?.challenge_completed ?? 'Nil' }}</td>
+          <td @click="router.push(`/dashboard/user/${person.id}`)" class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ person?.challenge_completed ?? 'Nil' }}</td>
           <td
           class="py-4 px-5 relative whitespace-nowrap text-sm text-[#667185]"
         >

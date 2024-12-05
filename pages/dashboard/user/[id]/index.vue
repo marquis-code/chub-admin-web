@@ -1,5 +1,6 @@
 <template>
     <main class="space-y-10">
+        <!-- {{userProfileObj.user}} -->
         <div class="flex justify-between items-center">
             <div class="space-y-1">
                 <h1 class="text-[#1D1F2C] font-semibold text-2xl">User Details</h1>
@@ -39,7 +40,7 @@
                   
             </div>
             <div>
-                <NuxtLink to="/dashboard/user/2/edit" class="bg-[#690571] text-white rounded-lg flex items-center gap-x-1 px-3 text-sm py-2">
+                <button @click="showUpdateUserModal = true" class="bg-[#690571] text-white rounded-lg flex items-center gap-x-1 px-3 text-sm py-2">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_7347_1432)">
                         <path d="M2.78133 14.7449C2.2812 15.2449 2.00015 15.9231 2 16.6303V17.9989H3.36867C4.07585 17.9988 4.75402 17.7177 5.254 17.2176L14.1493 8.32227L11.6767 5.84961L2.78133 14.7449Z" fill="white"/>
@@ -53,7 +54,7 @@
                         </svg>
                         
                     Edit
-                </NuxtLink>
+                </button>
             </div>
         </div>
         <div class="lg:flex space-y-6 lg:space-y-0 justify-start items-start gap-x-10">
@@ -63,11 +64,12 @@
                     <div class="flex flex-col items-center absolute top-24">
                         <div class="avatar online mb-5">
                             <div class="w-24 rounded-full">
-                                <img src="@/assets/img/online-avatar.png">
+                                <img v-if="userProfileObj?.user?.photo" :src="userProfileObj?.user?.photo?.image">
+                                <img v-else src="@/assets/img/online-avatar.png">
                             </div>
                         </div>
                         <div class="text-center">
-                            <p class="text-lg text-gray-700 font-semibold">Linda Blair</p>
+                            <p class="text-lg text-gray-700 font-semibold">{{userProfileObj?.user?.firstName}} {{userProfileObj?.user?.lastName}}</p>
                         </div>
                     </div>
                 </div>
@@ -90,7 +92,7 @@
                       <!-- {{ userInfo }} -->
                       <div>
                         <label class="text-gray-500">User ID</label>
-                        <div class="text-gray-900 font-medium">{{ userInfo?.id ?? 'Nil' }}</div>
+                        <div class="text-gray-900 font-medium">{{ userProfileObj?.user?.id ?? 'Nil' }}</div>
                       </div>
                     </div>
                     <div class="text-gray-600 flex gap-x-3">
@@ -109,7 +111,7 @@
                             
                     <div>
                         <label class="text-gray-500">E-mail</label>
-                        <div class="text-gray-900 font-medium">{{ userInfo?.email ?? 'Nil' }}</div>
+                        <div class="text-gray-900 font-medium">{{ userProfileObj?.user?.email ?? 'Nil' }}</div>
                     </div>
                     </div>
                     <div class="text-gray-600 flex gap-x-3">
@@ -128,7 +130,7 @@
                        <div>
                              
                         <label class="text-gray-500">Phone Number</label>
-                        <div class="text-gray-900 font-medium">{{ userInfo?.phone ?? 'Nil' }}</div>
+                        <div class="text-gray-900 font-medium">{{ userProfileObj?.user?.phoneNumber ?? 'Nil' }}</div>
                        </div>
                     </div>
                     <div class="text-gray-600 flex gap-x-3">
@@ -147,7 +149,7 @@
                             
                 <div>
                     <label class="text-gray-500">Join Date</label>
-                    <div class="text-gray-900 font-medium">{{ userInfo?.createdAt ?? 'Nil' }}</div>
+                    <div class="text-gray-900 font-medium">{{ userProfileObj?.user?.createdAt ?? 'Nil' }}</div>
                 </div>
                     </div>
                     <div class="text-gray-600 flex gap-x-3">
@@ -544,17 +546,35 @@
             </div>
         </div>
     </main>
+
+    <CoreFullScreenLoader
+          :visible="loading"
+          text="Please wait.. Saving challenge"
+          logo="/path-to-your-logo.png"
+      />
+
+      <CoreBaseModal
+    :show="showUpdateUserModal"
+    @update:show="showUpdateUserModal = false"
+  >
+    <UserProfileUpdateForm :user="userProfileObj?.user" @close="showUpdateUserModal = false" />
+  </CoreBaseModal>
 </template>
 
 <script setup lang="ts">
+import { useGetUserProfile } from '@/composables/users/useGetUserProfile'
 import challengeListBadge from "@/assets/img/challenges-list-badge.png";
 import completedChallengeBadge from "@/assets/img/completed-challenge-badge.png";
 import progressChallengeBadge from "@/assets/img/progress-challenge-badge.png";
+
+const { loading, userProfileObj } =  useGetUserProfile()
 
 definePageMeta({
     layout: 'dashboard',
     //   middleware: 'auth'
 })
+
+// const showUpdateUserModal = ref(false)
 
 const showUpdateUserModal = ref(false)
 

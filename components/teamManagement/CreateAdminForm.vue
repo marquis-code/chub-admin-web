@@ -6,7 +6,7 @@
         <label
           for="photo"
           class="block text-sm font-medium leading-6 text-[#777980]"
-          >Profile Img</label
+          >Profile Image</label
         >
         <div class="mt-1 flex items-center gap-x-2">
           <div v-if="previewImage" class="relative">
@@ -133,48 +133,6 @@
           <option v-for="item in rolesList" :key="item.id" :value="item.name">{{ item?.name }}</option>
         </select>
       </div>
-      
-      <!-- <div class="flex items-center justify-between pt-6">
-        <div>
-          <button
-            @click="emit('close')"
-            type="button"
-            class="text-[#858D9D] border border-[#858D9D] rounded-md px-3 py-2 text-sm"
-          >
-            Cancel
-          </button>
-        </div>
-        <div v-if="member">
-          <button
-            type="submit"
-            class="text-white bg-[#690571] rounded-md px-3 py-2 text-sm flex items-center justify-center"
-            :disabled="loading"
-          >
-            <span v-if="!loading">Submit</span>
-            <span v-if="loading" class="loader"></span>
-          </button>
-        </div>
-        <div v-if="member && isModify">
-          <button
-            type="submit"
-            class="text-white bg-[#690571] rounded-md px-3 py-2 text-sm flex items-center justify-center"
-            :disabled="loading"
-          >
-            <span v-if="!loading">Proceed to assign role</span>
-            <span v-if="loading" class="loader"></span>
-          </button>
-        </div>
-        <div v-if="!member">
-          <button
-            type="submit"
-            class="text-white bg-[#690571] disabled:cursor-not-allowed disabled:opacity-25 rounded-md px-3 py-2 text-sm flex items-center justify-center"
-            :disabled="!isValid || processing"
-          >
-            <span v-if="!processing">Create Admin</span>
-            <span v-if="processing" class="loader"></span>
-          </button>
-        </div>
-      </div> -->
       <div class="flex items-center justify-between pt-6">
         <div>
           <button
@@ -224,10 +182,24 @@
       </div>
       
     </form>
+
+    <CoreFullScreenLoader
+          :visible="uploading"
+          text="Please wait"
+          logo="/path-to-your-logo.png"
+      />
+
+
+    <!-- <CoreFullScreenLoader
+          :visible="processing"
+          text="Please wait.. Creating challenge"
+          logo="/path-to-your-logo.png"
+      /> -->
   </section>
 </template>
 
 <script setup lang="ts">
+import { useUploadFile } from '@/composables/core/useUpload'
 import { useGetRoles } from '@/composables/roles/useFetchRoles'
 import { useUpdateAdminProfile } from '@/composables/admin-mgt/updateAdminProfile';
 import { useNotification } from '@/composables/core/useNotification';
@@ -239,6 +211,7 @@ const { updateAdminProfile, loading, setUpdatePayload } = useUpdateAdminProfile(
 const { assignRoleToAdmin, setPayload, loading:updating } =  useAssignRoleToAdmin()
 const { createAdmin, loading: processing, setObj } = useCreateAdmin()
 const { rolesList, loading: loadingRoles } = useGetRoles()
+const { uploadFile, loading: uploading, uploadResponse } = useUploadFile()
 
 const props = defineProps({
   title: {
@@ -377,18 +350,48 @@ const triggerFileInput = () => {
   (fileInput.value as HTMLInputElement)?.click();
 };
 
-const handleImageUpload = (event: Event) => {
+const handleImageUpload = async (event: Event) => {
   const input = event.target as HTMLInputElement;
   if (input.files && input.files[0]) {
     const file = input.files[0];
-    formData.avatar = file;
+    formData.avatar = file;  // Assuming you're storing the file in formData
+
+    // Use the composable for image upload
+    
+    // Read the file to preview it
     const reader = new FileReader();
-    reader.onload = (e) => {
+    reader.onload = async (e) => {
       previewImage.value = e.target?.result as string;
+
+      // Get the new dimensions (e.g., hardcoded here, or dynamically calculated)
+      const newDimensions = '800x600';
+
+      // Trigger the upload process with the composable
+      console.log(file, newDimensions)
+      await uploadFile(file, newDimensions);
+
+      // Handle the response
+      if (uploadResponse.value) {
+        // Process the response (e.g., you can store the uploaded file URL or perform any other actions)
+        console.log('Upload response:', uploadResponse.value);
+      }
     };
     reader.readAsDataURL(file);
   }
 };
+
+// const handleImageUpload = (event: Event) => {
+//   const input = event.target as HTMLInputElement;
+//   if (input.files && input.files[0]) {
+//     const file = input.files[0];
+//     formData.avatar = file;
+//     const reader = new FileReader();
+//     reader.onload = (e) => {
+//       previewImage.value = e.target?.result as string;
+//     };
+//     reader.readAsDataURL(file);
+//   }
+// };
 
 const removeImage = () => {
   formData.avatar = null;

@@ -60,7 +60,12 @@
             <div class="flex pb-4 w-full">
               <div class="mr-2 w-full">
                 <label class="block text-xs text-gray-700">Start Date</label>
-                <CoreCustomDatepicker :disabledDates="disablePastDates" v-model="challengeObj.startDate" @dateSelected="handleSelectedStartDate" />
+                <CoreDatePicker
+                v-model="challengeObj.startDate"
+                placeholder="Pick your date"
+                @selectedDate="handleSelectedStartDate"
+               />
+                <!-- <CoreCustomDatepicker :disabledDates="disablePastDates" v-model="challengeObj.startDate" @dateSelected="handleSelectedStartDate" /> -->
 <!--                <div class="relative mt-2">-->
 <!--                  <input :min="today" v-model="challengeObj.startDate" type="date" placeholder="DD/MM/YY" class="w-full text-sm p-2 py-3 rounded-md pl-10 outline-none border border-gray-100"/>-->
 <!--                  <span class="absolute inset-y-0 left-4 flex items-center pr-3 text-gray-400">-->
@@ -82,8 +87,14 @@
               <div class="ml-2 w-full">
                <div class="w-full">
                 <label class="block text-xs text-gray-700">End Date</label>
-                 <CoreCustomDatepicker v-model="challengeObj.endDate" @dateSelected="handleSelectedEndDate" />
-               </div>
+                 <!-- <CoreCustomDatepicker v-model="challengeObj.endDate" @dateSelected="handleSelectedEndDate" /> -->
+                 <CoreDatePicker
+                      class="w-full"
+                      v-model="challengeObj.endDate"
+                      placeholder="Pick your date"
+                      @selectedDate="handleSelectedEndDate"
+                    />
+                  </div>
 <!--                <div class="relative mt-2">-->
 <!--                  <input  :min="today" v-model="challengeObj.endDate" type="date" placeholder="DD/MM/YY" class="w-full text-sm p-2 py-3 rounded-md pl-10 outline-none border border-gray-100"/>-->
 <!--                  <span class="absolute inset-y-0 left-4 flex items-center pr-3 text-gray-400">-->
@@ -188,8 +199,13 @@
                 <div class="flex  pb-4">
                   <div class="mr-2 w-full">
                     <label class="block text-xs text-gray-700">Start Date</label>
-                    {{selectedDateItem}}
-                    <CoreCustomDatepicker v-model="selectedDateItem" @dateSelected="handleSelectedTaskStartDate" />
+                    <CoreDatePicker
+                        v-model="selectedDateItem"
+                        placeholder="Pick your date"
+                        @selectedDate="handleSelectedTaskStartDate"
+                      />
+                    <!-- {{selectedDateItem}} -->
+                    <!-- <CoreCustomDatepicker v-model="selectedDateItem" @dateSelected="handleSelectedTaskStartDate" /> -->
 <!--                    <div class="relative mt-2">-->
 <!--                      <input v-model="taskItem.startDate" :min="today" type="date" placeholder="DD/MM/YY" class="w-full p-2 py-3.5 text-sm rounded-md pl-10 outline-none border border-gray-100"/>-->
 <!--                      <span class="absolute inset-y-0 left-4 flex items-center pr-3 text-gray-400">-->
@@ -212,7 +228,12 @@
 <!--                   <div class="">-->
                     <div class="w-full">
                       <label class="block text-xs block text-gray-700">End Date</label>
-                       <CoreCustomDatepicker v-cloakw-full v-model="taskItem.endDate" @dateSelected="handleSelectedTaskEndDate" />
+                      <CoreDatePicker
+                        v-model="taskItem.endDate"
+                        placeholder="Pick your date"
+                        @selectedDate="handleSelectedTaskEndDate"
+                      />
+                       <!-- <CoreCustomDatepicker v-cloakw-full v-model="taskItem.endDate" @dateSelected="handleSelectedTaskEndDate" /> -->
                     </div>
 <!--                    <p class="text-[#690571] font-medium text-xs pl-3 cursor-pointer">Schedule </p>-->
 <!--                   </div>-->
@@ -343,7 +364,13 @@
         No Task Available to preview
     </div>
   </main>
-    </CoreBaseModal>
+  </CoreBaseModal>
+
+  <!-- <CoreFullScreenLoader
+          :visible="processing"
+          text="Please wait.. Creating challenge"
+          logo="/path-to-your-logo.png"
+      /> -->
   </main>
 </template>
 

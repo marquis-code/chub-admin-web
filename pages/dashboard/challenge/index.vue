@@ -157,6 +157,11 @@
               </div>
     </template> -->
      </CoreSideDrawer>
+     <CoreFullScreenLoader
+          :visible="creating"
+          text="Please wait.. Creating challenge"
+          logo="/path-to-your-logo.png"
+      />
   </main>
 </template>
 

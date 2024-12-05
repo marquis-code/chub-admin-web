@@ -63,9 +63,9 @@
                 <div class="w-1/2 mr-2">
                   <label class="block text-xs text-gray-700">Start Date</label>
                   <div class="relative mt-2">
-                    <input v-model="challengeObj.startDate" type="date" placeholder="DD/MM/YY" 
-                    :max="today" class="w-full text-sm p-2 py-3 rounded-md pl-10 outline-none border border-gray-100"/>
-                    <span class="absolute inset-y-0 left-4 flex items-center pr-3 text-gray-400">
+                    <!-- <input v-model="challengeObj.startDate" type="date" placeholder="DD/MM/YY" 
+                    :max="today" class="w-full text-sm p-2 py-3 rounded-md pl-10 outline-none border border-gray-100"/> -->
+                    <!-- <span class="absolute inset-y-0 left-4 flex items-center pr-3 text-gray-400">
                       <svg width="20" height="20" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_6661_7698)">
                         <path d="M0.5 12.666C0.501059 13.5497 0.852588 14.397 1.47748 15.0219C2.10237 15.6468 2.9496 15.9983 3.83333 15.9993H13.1667C14.0504 15.9983 14.8976 15.6468 15.5225 15.0219C16.1474 14.397 16.4989 13.5497 16.5 12.666V6.66602H0.5V12.666ZM11.8333 9.66602C12.0311 9.66602 12.2245 9.72466 12.3889 9.83455C12.5534 9.94443 12.6815 10.1006 12.7572 10.2833C12.8329 10.4661 12.8527 10.6671 12.8141 10.8611C12.7755 11.0551 12.6803 11.2333 12.5404 11.3731C12.4006 11.513 12.2224 11.6082 12.0284 11.6468C11.8344 11.6854 11.6334 11.6656 11.4507 11.5899C11.2679 11.5142 11.1117 11.386 11.0019 11.2216C10.892 11.0571 10.8333 10.8638 10.8333 10.666C10.8333 10.4008 10.9387 10.1464 11.1262 9.95891C11.3138 9.77137 11.5681 9.66602 11.8333 9.66602ZM8.5 9.66602C8.69778 9.66602 8.89112 9.72466 9.05557 9.83455C9.22002 9.94443 9.34819 10.1006 9.42388 10.2833C9.49957 10.4661 9.51937 10.6671 9.48079 10.8611C9.4422 11.0551 9.34696 11.2333 9.20711 11.3731C9.06726 11.513 8.88907 11.6082 8.69509 11.6468C8.50111 11.6854 8.30004 11.6656 8.11732 11.5899C7.93459 11.5142 7.77841 11.386 7.66853 11.2216C7.55865 11.0571 7.5 10.8638 7.5 10.666C7.5 10.4008 7.60536 10.1464 7.79289 9.95891C7.98043 9.77137 8.23478 9.66602 8.5 9.66602ZM5.16667 9.66602C5.36445 9.66602 5.55779 9.72466 5.72224 9.83455C5.88669 9.94443 6.01486 10.1006 6.09055 10.2833C6.16623 10.4661 6.18604 10.6671 6.14745 10.8611C6.10887 11.0551 6.01363 11.2333 5.87377 11.3731C5.73392 11.513 5.55574 11.6082 5.36176 11.6468C5.16778 11.6854 4.96671 11.6656 4.78398 11.5899C4.60126 11.5142 4.44508 11.386 4.3352 11.2216C4.22532 11.0571 4.16667 10.8638 4.16667 10.666C4.16667 10.4008 4.27202 10.1464 4.45956 9.95891C4.6471 9.77137 4.90145 9.66602 5.16667 9.66602Z" fill="#858D9D"/>
@@ -78,7 +78,14 @@
                         </defs>
                         </svg>
                         
-                    </span>
+                    </span> -->
+                    <!-- {{challengeObj.startDate}} -->
+                     <!-- {{ normalDate }} -->
+                    <CoreDatePicker
+               v-model="challengeObj.startDate"
+                placeholder="Pick your date"
+                @selectedDate="handleSelectedStartDate"
+               />
                   </div>
                 </div>
                 <div class="w-1/2 ml-2">
@@ -86,8 +93,13 @@
                   <label class="block text-xs text-gray-700">End Date</label>
                  </div>
                   <div class="relative mt-2">
-                    <input :min="today" v-model="challengeObj.endDate" type="date" placeholder="DD/MM/YY" class="w-full text-sm p-2 py-3 rounded-md pl-10 outline-none border border-gray-100"/>
-                    <span class="absolute inset-y-0 left-4 flex items-center pr-3 text-gray-400">
+                    <CoreDatePicker
+                        v-model="challengeObj.endDate"
+                        placeholder="Pick your date"
+                        @selectedDate="handleSelectedEndDate"
+                      />
+                    <!-- <input :min="today" v-model="challengeObj.endDate" type="date" placeholder="DD/MM/YY" class="w-full text-sm p-2 py-3 rounded-md pl-10 outline-none border border-gray-100"/> -->
+                    <!-- <span class="absolute inset-y-0 left-4 flex items-center pr-3 text-gray-400">
                       <svg width="20" height="20" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_6661_7698)">
                         <path d="M0.5 12.666C0.501059 13.5497 0.852588 14.397 1.47748 15.0219C2.10237 15.6468 2.9496 15.9983 3.83333 15.9993H13.1667C14.0504 15.9983 14.8976 15.6468 15.5225 15.0219C16.1474 14.397 16.4989 13.5497 16.5 12.666V6.66602H0.5V12.666ZM11.8333 9.66602C12.0311 9.66602 12.2245 9.72466 12.3889 9.83455C12.5534 9.94443 12.6815 10.1006 12.7572 10.2833C12.8329 10.4661 12.8527 10.6671 12.8141 10.8611C12.7755 11.0551 12.6803 11.2333 12.5404 11.3731C12.4006 11.513 12.2224 11.6082 12.0284 11.6468C11.8344 11.6854 11.6334 11.6656 11.4507 11.5899C11.2679 11.5142 11.1117 11.386 11.0019 11.2216C10.892 11.0571 10.8333 10.8638 10.8333 10.666C10.8333 10.4008 10.9387 10.1464 11.1262 9.95891C11.3138 9.77137 11.5681 9.66602 11.8333 9.66602ZM8.5 9.66602C8.69778 9.66602 8.89112 9.72466 9.05557 9.83455C9.22002 9.94443 9.34819 10.1006 9.42388 10.2833C9.49957 10.4661 9.51937 10.6671 9.48079 10.8611C9.4422 11.0551 9.34696 11.2333 9.20711 11.3731C9.06726 11.513 8.88907 11.6082 8.69509 11.6468C8.50111 11.6854 8.30004 11.6656 8.11732 11.5899C7.93459 11.5142 7.77841 11.386 7.66853 11.2216C7.55865 11.0571 7.5 10.8638 7.5 10.666C7.5 10.4008 7.60536 10.1464 7.79289 9.95891C7.98043 9.77137 8.23478 9.66602 8.5 9.66602ZM5.16667 9.66602C5.36445 9.66602 5.55779 9.72466 5.72224 9.83455C5.88669 9.94443 6.01486 10.1006 6.09055 10.2833C6.16623 10.4661 6.18604 10.6671 6.14745 10.8611C6.10887 11.0551 6.01363 11.2333 5.87377 11.3731C5.73392 11.513 5.55574 11.6082 5.36176 11.6468C5.16778 11.6854 4.96671 11.6656 4.78398 11.5899C4.60126 11.5142 4.44508 11.386 4.3352 11.2216C4.22532 11.0571 4.16667 10.8638 4.16667 10.666C4.16667 10.4008 4.27202 10.1464 4.45956 9.95891C4.6471 9.77137 4.90145 9.66602 5.16667 9.66602Z" fill="#858D9D"/>
@@ -99,7 +111,7 @@
                         </clipPath>
                         </defs>
                         </svg>              
-                    </span>
+                    </span> -->
                   </div>
                 </div>
               </div>
@@ -332,10 +344,18 @@
     </div>
   </main>
     </CoreBaseModal>
+
+
+    <CoreFullScreenLoader
+          :visible="loading"
+          text="Please wait.. Saving challenge"
+          logo="/path-to-your-logo.png"
+      />
    </main>
   </template>
   
   <script lang="ts" setup>
+  import { useConvertTimestamp } from '@/composables/core/useConvertTimestamp'
   import { useGeolocation } from '@/composables/core/useGeolocation'
   // import EmojiPicker from 'vue3-emoji-picker'
   import { useDuration } from '@/composables/core/useDuration'
@@ -353,6 +373,28 @@ const { showToast } = useCustomToast();
   
   const emit = defineEmits(['close', 'edit'])
   const previewTasks = ref(false)
+
+  const { normalDate } = useConvertTimestamp(challengeObj.value.startDate)
+
+//   // Local state for challengeObj
+// const challengeObj = ref({
+//   startDate: 1733738820000, // Example Unix timestamp
+// });
+
+// Use the composable to convert the timestamp to a normal Date
+const { normalDate: normalStartDate } = useConvertTimestamp(challengeObj.value.startDate);
+
+// Watch the startDate to update the normalStartDate when it changes
+watch(() => challengeObj.value.startDate, (newTimestamp) => {
+  normalStartDate.value = new Date(Number(newTimestamp));
+});
+
+// Handle the selected date and convert it back to a timestamp
+const handleSelectedStartDate = (selectedDate) => {
+  // Convert selected date to timestamp
+  challengeObj.value.startDate = selectedDate.getTime(); // Convert to Unix timestamp (milliseconds)
+};
+
   
   // const handleCloseChallenge = () => {
   //   emit('close')
@@ -399,6 +441,9 @@ const editImagePreview = computed(() => challengeObj.value.imageUrl || null);
   }
   ])
   
+  const handleSelectedEndDate = (date: any) => {
+  challengeObj.value.endDate = date
+}
   
   const imagePreview = ref('');
   const selectedEmojiItem = ref('');
@@ -540,6 +585,9 @@ const createTask = () => {
   }
 };
 
+// const handleSelectedStartDate = (date: any) => {
+//   challengeObj.value.startDate = date
+// }
 
 const editItemDetails = (index: number) => {
   editIndex.value = index;
