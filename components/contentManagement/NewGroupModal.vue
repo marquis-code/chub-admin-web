@@ -39,7 +39,7 @@
             />
           <!-- <input type="checkbox" v-model="selectedUsers" :value="user.id" class="text-purple-600 form-checkbox rounded" /> -->
           <div class="flex items-center space-x-2">
-            <img src="@/assets/img/img.png" alt="User Avatar" class="rounded-full w-10 h-10" />
+            <img src="@/assets/img/avatar1.png" alt="User Avatar" class="rounded-full w-10 h-10" />
             <div>
               <p class="font-medium text-[#1D1F2C]">{{ user.name }}</p>
               <p class="text-xs text-[#667085]">@{{ user.username }}</p>
