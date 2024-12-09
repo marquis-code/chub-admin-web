@@ -288,7 +288,7 @@
                                     Filters</button>
                             </div>
                         </div>
-                        <div class="flow-root">
+                        <div v-if="userChallenges?.length && !fetchingChallenges" class="flow-root">
                             <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                                 <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8"                >
                                     <table class="min-w-full divide-y divide-gray-300">
@@ -312,7 +312,7 @@
                                             </tr>
                                         </thead>
                                         <tbody class="divide-y divide-gray-200 bg-white">
-                                            <tr v-for="item in 5" :key="item">
+                                            <tr v-for="(item, idx) in userChallenges" :key="item.id">
                                                 <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
                                                     <div class="flex items-center">
                                                         <div class="h-11 w-11 flex-shrink-0">
@@ -346,8 +346,7 @@
                                     </table>
                                 </div>
                             </div>
-                        </div>
-                        <div class="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6">
+                            <div class="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6">
                             <div class="flex flex-1 justify-between sm:hidden">
                                 <a href="#"
                                     class="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Previous</a>
@@ -405,7 +404,13 @@
                                 </div>
                             </div>
                         </div>
-    
+                        </div>
+                        <div class="h-44 w-full bg-slate-300 animate-pulse rounded" v-else-if="fetchingChallenges && !userChallenges.length"></div>
+                        <div class="flex justify-center flex-col items-center py-10" v-else>
+                            <img src="@/assets/icons/config-illustration.svg" />
+                             NO CHALLENGES AVAILABLE
+                        </div>
+                
                     </div>
     
                     <div class="border rounded-lg border-gray-50 mb-10">
@@ -420,7 +425,7 @@
                                     Filters</button>
                             </div>
                         </div>
-                        <div class="flow-root">
+                        <div v-if="userTasks?.length && !fetchingTasks" class="flow-root">
                             <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                                 <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
                                     <table class="min-w-full divide-y divide-gray-300">
@@ -478,8 +483,7 @@
                                     </table>
                                 </div>
                             </div>
-                        </div>
-                        <div class="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6">
+                            <div class="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6">
                             <div class="flex flex-1 justify-between sm:hidden">
                                 <a href="#"
                                     class="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Previous</a>
@@ -537,11 +541,17 @@
                                 </div>
                             </div>
                         </div>
+                        </div>
+                        <div class="h-44 w-full bg-slate-300 animate-pulse rounded" v-else-if="fetchingTasks && !userTasks.length"></div>
+                        <div class="flex justify-center flex-col items-center py-10" v-else>
+                            <img src="@/assets/icons/config-illustration.svg" />
+                             NO TASKS AVAILABLE
+                        </div>
     
                     </div>
                 </div>
                <div v-if="activeTab === 'activity'">
-                <UserEngagementActivity  />
+                <UserEngagementActivity />
                </div>
             </div>
         </div>
@@ -549,7 +559,7 @@
 
     <CoreFullScreenLoader
           :visible="loading"
-          text="Please wait.. Saving challenge"
+          text="Please wait..Fetching profile information"
           logo="/path-to-your-logo.png"
       />
 
@@ -562,10 +572,14 @@
 </template>
 
 <script setup lang="ts">
+import { useGetUserChallenges } from '@/composables/users/useGetUserChallenges'
+import { useGetUserTasks } from '@/composables/users/useGetUserTasks'
 import { useGetUserProfile } from '@/composables/users/useGetUserProfile'
 import challengeListBadge from "@/assets/img/challenges-list-badge.png";
 import completedChallengeBadge from "@/assets/img/completed-challenge-badge.png";
 import progressChallengeBadge from "@/assets/img/progress-challenge-badge.png";
+const { loading: fetchingChallenges, userChallenges } = useGetUserChallenges()
+const { loading: fetchingTasks, userTasks } = useGetUserTasks()
 
 const { loading, userProfileObj } =  useGetUserProfile()
 

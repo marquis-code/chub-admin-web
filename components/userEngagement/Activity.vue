@@ -1,7 +1,7 @@
 <template>
     <div class="bg-white rounded-lg border border-gray-50 -md p-4">
-      <h2 class="text-xl font-bold mb-4">Activity</h2>
-      <div class="relative space-y-4">
+      <h2 class="text-xl font-bold mb-4 border-b-[0.5px] pb-3">Activity</h2>
+      <div v-if="userActivityLogs.length && !fetchingLogs" class="relative space-y-4">
         <div class="absolute left-2 top-6 bottom-6 w-px border-dashed border-gray-300 border"></div>
         <div v-for="(activity, index) in activities" :key="index" class="relative flex items-start">
           <span class="w-4 h-4 bg-[#690571] rounded-full mt-1 mr-4 relative z-10"></span>
@@ -20,6 +20,11 @@
           <span class="text-gray-400 text-xs ml-4">{{ activity.time }}</span>
         </div>
       </div>
+      <div class="h-44 w-full bg-slate-300 animate-pulse rounded" v-else-if="fetchingLogs && !userActivityLogs.length"></div>
+      <div class="flex justify-center flex-col items-center py-10" v-else>
+        <img src="@/assets/icons/config-illustration.svg" />
+            NO LOGS AVAILABLE
+      </div>
     </div>
   </template>
   
@@ -28,6 +33,8 @@
   import attachment1 from '@/assets/img/attachment1.png'
   import attachment2 from '@/assets/img/attachment2.png'
   import attachment3 from '@/assets/img/attachment3.png'
+  import { useGetUserActivityLogs } from '@/composables/users/useGetUserActivityLogs'
+  const { loading: fetchingLogs, userActivityLogs } = useGetUserActivityLogs()
   
   const activities = ref([
     {
